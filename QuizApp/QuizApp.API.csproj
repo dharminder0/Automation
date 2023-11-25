@@ -810,10 +810,6 @@
     <Compile Include="Migrations\202010161202547_Quiz_UsageTypeInQuiz.Designer.cs">
       <DependentUpon>202010161202547_Quiz_UsageTypeInQuiz.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202010260923206_ResolveMigrationError26Oct2020.cs" />
-    <Compile Include="Migrations\202010260923206_ResolveMigrationError26Oct2020.Designer.cs">
-      <DependentUpon>202010260923206_ResolveMigrationError26Oct2020.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202011040737551_ConfigurationDetails_WhatsApp.cs" />
     <Compile Include="Migrations\202011040737551_ConfigurationDetails_WhatsApp.Designer.cs">
       <DependentUpon>202011040737551_ConfigurationDetails_WhatsApp.cs</DependentUpon>
@@ -1006,10 +1002,6 @@
     <Compile Include="Migrations\202206230715476_IncreaseTitleLenght_QuizDetails_QuizResults.designer.cs">
       <DependentUpon>202206230715476_IncreaseTitleLenght_QuizDetails_QuizResults.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202208031032206_ObjectFieldsInAnswer_IsExternalSync.cs" />
-    <Compile Include="Migrations\202208031032206_ObjectFieldsInAnswer_IsExternalSync.designer.cs">
-      <DependentUpon>202208031032206_ObjectFieldsInAnswer_IsExternalSync.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202208041315465_AnswerOptionsInQuizQuestions_Description.cs" />
     <Compile Include="Migrations\202208041315465_AnswerOptionsInQuizQuestions_Description.designer.cs">
       <DependentUpon>202208041315465_AnswerOptionsInQuizQuestions_Description.cs</DependentUpon>
@@ -1017,14 +1009,6 @@
     <Compile Include="Migrations\202209070811486_QuizStats_AttemptStatus.cs" />
     <Compile Include="Migrations\202209070811486_QuizStats_AttemptStatus.designer.cs">
       <DependentUpon>202209070811486_QuizStats_AttemptStatus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202212140712301_ObjectFieldsInAnswer_IsCommentMapped.cs" />
-    <Compile Include="Migrations\202212140712301_ObjectFieldsInAnswer_IsCommentMapped.designer.cs">
-      <DependentUpon>202212140712301_ObjectFieldsInAnswer_IsCommentMapped.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202212151300396_ObjectFieldsInAnswerComment_IsCommentMapped.cs" />
-    <Compile Include="Migrations\202212151300396_ObjectFieldsInAnswerComment_IsCommentMapped.designer.cs">
-      <DependentUpon>202212151300396_ObjectFieldsInAnswerComment_IsCommentMapped.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202212291013006_WhatsappLogging.cs" />
     <Compile Include="Migrations\202212291013006_WhatsappLogging.designer.cs">
@@ -1579,9 +1563,6 @@
     <EmbeddedResource Include="Migrations\202010161202547_Quiz_UsageTypeInQuiz.resx">
       <DependentUpon>202010161202547_Quiz_UsageTypeInQuiz.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010260923206_ResolveMigrationError26Oct2020.resx">
-      <DependentUpon>202010260923206_ResolveMigrationError26Oct2020.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011040737551_ConfigurationDetails_WhatsApp.resx">
       <DependentUpon>202011040737551_ConfigurationDetails_WhatsApp.cs</DependentUpon>
     </EmbeddedResource>
@@ -1726,20 +1707,11 @@
     <EmbeddedResource Include="Migrations\202206230715476_IncreaseTitleLenght_QuizDetails_QuizResults.resx">
       <DependentUpon>202206230715476_IncreaseTitleLenght_QuizDetails_QuizResults.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202208031032206_ObjectFieldsInAnswer_IsExternalSync.resx">
-      <DependentUpon>202208031032206_ObjectFieldsInAnswer_IsExternalSync.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202208041315465_AnswerOptionsInQuizQuestions_Description.resx">
       <DependentUpon>202208041315465_AnswerOptionsInQuizQuestions_Description.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202209070811486_QuizStats_AttemptStatus.resx">
       <DependentUpon>202209070811486_QuizStats_AttemptStatus.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202212140712301_ObjectFieldsInAnswer_IsCommentMapped.resx">
-      <DependentUpon>202212140712301_ObjectFieldsInAnswer_IsCommentMapped.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202212151300396_ObjectFieldsInAnswerComment_IsCommentMapped.resx">
-      <DependentUpon>202212151300396_ObjectFieldsInAnswerComment_IsCommentMapped.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212291013006_WhatsappLogging.resx">
       <DependentUpon>202212291013006_WhatsappLogging.cs</DependentUpon>

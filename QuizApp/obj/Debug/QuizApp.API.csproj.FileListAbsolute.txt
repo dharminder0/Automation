@@ -577,7 +577,6 @@ E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.ConfigurationId_
 E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.PendingApiQueue_RequestTypeURLandAuthorization.resources
 E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.QuizDetails_UsageType.resources
 E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.Quiz_UsageTypeInQuiz.resources
-E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.ResolveMigrationError26Oct2020.resources
 E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.ConfigurationDetails_WhatsApp.resources
 E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.HsmTemplateId_Nullable.resources
 E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.WorkPackageInfo_SentOn.resources
@@ -626,11 +625,8 @@ E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.ConfigurationDet
 E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.NotificationTemplate_MsgVariables.resources
 E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.QuizVariablesMigration.resources
 E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.IncreaseTitleLenght_QuizDetails_QuizResults.resources
-E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.ObjectFieldsInAnswer_IsExternalSync.resources
 E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.AnswerOptionsInQuizQuestions_Description.resources
 E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.QuizStats_AttemptStatus.resources
-E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.ObjectFieldsInAnswer_IsCommentMapped.resources
-E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.ObjectFieldsInAnswerComment_IsCommentMapped.resources
 E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.WhatsappLogging.resources
 E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.ObjectFieldsInAnswer_QuestionId.resources
 E:\FleekProject\Automation\QuizApp\obj\Debug\QuizApp.Migrations.FieldSyncSetting.resources
