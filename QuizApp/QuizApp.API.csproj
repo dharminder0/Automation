@@ -241,9 +241,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Test.txt" />
     <Content Include="bin\QuizApp.dll" />
     <Content Include="bin\QuizApp.pdb" />
+    <Content Include="bin\QuizApp.XML" />
     <Content Include="Global.asax" />
     <Content Include="NotificationDefaultTemplate.xml" />
     <Content Include="Web.config">
@@ -1218,6 +1218,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\QuizVariables\" />
   </ItemGroup>
