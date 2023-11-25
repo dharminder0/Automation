@@ -1,0 +1,1364 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>QuizApp</name>
+    </assembly>
+    <members>
+        <member name="M:QuizApp.Controllers.AccountController.ValidateJwtToken(System.String,System.String,System.String)">
+            <summary>
+            To authorize Jwt Token
+            </summary>
+            <param name="JwtToken"></param>
+            <param name="CompanyCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.AccountController.ValidateCompanyCode(System.String)">
+            <summary>
+            To authorize Company Code
+            </summary>
+            <param name="CompanyCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.AccountController.GetClientCountries(System.String)">
+            <summary>
+            Gets list of countries selected for a client
+            </summary>
+            <param name="clientCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.BranchingLogicController.GetQuizBranchingLogicData(System.Int32)">
+            <summary>
+            Get Quiz BranchingLogic Data
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.BranchingLogicController.GetQuizBranchingLogicDetails(System.Int32)">
+            <summary>
+            Get Quiz BranchingLogic Details
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.CacheController.GetAllCacheObjects">
+            <summary>
+            Gets all cached objects along with their keys from memory cache
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.CacheController.GetByKey(System.String)">
+            <summary>
+            Gets a cached object by its key
+            </summary>
+            <param name="key">key of the cached object</param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.CacheController.GetAllCacheKeys">
+            <summary>
+            Gets an array of all keys of the cached objects
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.CacheController.DeleteByKey(System.String)">
+            <summary>
+            Deletes a cached object from memory cache by its key
+            </summary>
+            <param name="key">key of the cached object</param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.CacheController.DeleteAllCacheObjects">
+            <summary>
+            Clears all cached objects from memory cache
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.CommunicationController.UpdateCommunicationStatus(QuizApp.Request.CommunicationRequest)">
+             <summary>
+            Update Communication Status
+             </summary>
+             <param name="communicationRequest"></param>
+             <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.ConfigurationDetailsController.ClearOldConfigurationByQuizAttemptId(System.Int32)">
+            <summary>
+            To clear Old configurationDetails by ConfigurationDetailsid
+            </summary>
+            <param name="quizAttemptId"></param>
+            <returns></returns>        
+        </member>
+        <member name="M:QuizApp.Controllers.ContactController.DeleteContactData(QuizApp.Request.ContactRequest)">
+             <summary>
+            Delete Contact Data
+             </summary>
+             <param name="contactRequest"></param>
+             <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.CourseController.GetDashboardData(System.Int64,System.Boolean,System.String,System.String,System.Boolean)">
+            <summary>
+            This will return dashboard data
+            </summary>
+            <param name="OffsetValue"></param>
+            <param name="IncludeSharedWithMe"></param>
+            <param name="BusinessUserEmail"></param>
+            <param name="OfficeIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.CourseController.GetTechnicalRecruiterData(System.Int64,System.String,System.Int32)">
+            <summary>
+            To Get TechnicalRecruiterData
+            </summary>
+            <param name="OffsetValue"></param>
+            <param name="BusinessUserEmail"></param>
+            <param name="Module"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.CronController.SendMailWithAttachment(QuizApp.Request.CronRequest)">
+            <summary>
+            SendMailWithAttachment
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.DebugController.DebugTm">
+            <summary>
+            This will be used as maintanance point for the project 
+            This must not deleted
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.FieldSettingController.FieldSyncSetting">
+            <summary>
+            Get field sync setting
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.IntegrationController.PushWorkPackage(QuizApp.Request.WorkPackageRequest)">
+            <summary>
+            Push Work Package
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.IntegrationController.GetSHA256GeneratorValue(System.String,System.String,System.String,System.String)">
+            <summary>
+            To Get SHA-256 Generator Value
+            </summary>
+            <param name="CloudName"></param>
+            <param name="Timestamp"></param>
+            <param name="Username"></param>
+            <param name="SecretKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.IntegrationController.GetSearchAndSuggestion(System.Boolean,System.Boolean,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Boolean})">
+            <summary>
+            Get Search And Suggestion
+            </summary>
+            <param name="IncludeSharedWithMe"></param>
+            <param name="IsDataforGlobalOfficeAdmin"></param>
+            <param name="SearchTxt"></param>
+            <param name="OfficeIdList"></param>
+            <param name="IsPublished"></param>
+            <param name="UsageType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.IntegrationController.ClearCache">
+            <summary>
+            To clear cache
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.IntegrationController.AddOrUpdateConfigurationDetails(QuizApp.Request.AddOrUpdateConfigurationDetailsRequest)">
+            <summary>
+            AddOrUpdateConfigurationDetails
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.IntegrationController.RemoveConfiguration(System.String)">
+            <summary>
+            Remove Configuration
+            </summary>
+            <param name="ConfigurationId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.IntegrationController.SaveQuizUrlSetting(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            To Save QuizUrlSetting
+            </summary>
+            <param name="Key"></param>
+            <param name="DomainName"></param>
+            <param name="Value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.IntegrationController.CheckQuizUrlSettingKey(System.String,System.String)">
+            <summary>
+            To Check QuizUrlSettingKey
+            </summary>
+            <param name="Key"></param>
+            <param name="DomainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.IntegrationController.GetObjectFieldsList">
+            <summary>
+            GetObjectFieldsList
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.IntegrationController.ClearOldLogs">
+            <summary>
+            To clear old logs
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.IntegrationController.ClearPreviewQuiz(System.Int32)">
+            <summary>
+            To clear Preview Quiz Id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.AddQuizTemplate(QuizApp.Request.NotificationTemplateRequest)">
+            <summary>
+            Add quiz template
+            </summary>
+            <param name="notificationTemplateRequestObj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.UpdateQuizInTemplate(QuizApp.Request.NotificationTemplateRequest)">
+            <summary>
+            Update quiz in template
+            </summary>
+            <param name="notificationTemplateRequestObj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.SaveTemplateBody(QuizApp.Request.NotificationTemplateRequest)">
+            <summary>
+            Save Body, Subject and SMS body in the template
+            </summary>
+            <param name="notificationTemplateRequestObj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.GetTemplateBody(System.Int32)">
+            <summary>
+            Get template body details.
+            </summary>
+            <param name="notificationTemplateId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.GetTemplateBodyWithValues(System.Int32,System.String)">
+            <summary>
+            Get Template Body With Values
+            </summary>
+            <param name="QuizId"></param>
+            <param name="LeadUserId"></param>
+            <param name="SourceName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.GetTemplateTypeDetails(QuizApp.Request.TemplateTypeRequest.TemplateTypeRequestModel)">
+            <summary>
+            Get details of template type.
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.DeleteTemplate(System.Int32)">
+            <summary>
+            Delete template.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>        
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.SetQuizInactive(QuizApp.Request.NotificationTemplateRequest)">
+            <summary>
+            Set Quiz inactive in template
+            </summary>
+            <param name="notificationTemplateRequestObj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.GetDefaultTemplateByType(System.Int32)">
+            <summary>
+            Get default template by type.
+            </summary>
+            <param name="NotificationType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.GetSearchAndSuggestionByNotificationTemplate(System.Int32,System.Int32,System.Boolean,System.Int64,System.Nullable{System.Int32},System.String,System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean})">
+            <summary>
+            search and suggestion API to search active or inactive automation
+            </summary>
+            <param name="Status"></param>
+            <param name="NotificationType"></param>
+            <param name="IncludeSharedWithMe"></param>
+            <param name="OffsetValue"></param>
+            <param name="OfficeId"></param>
+            <param name="NotificationTemplateId"></param>
+            <param name="SearchTxt"></param>
+            <param name="IsPublished"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.GetEmailSignature(System.Int32)">
+            <summary>
+            To Get Email Signature
+            </summary>
+            <param name="SignatureType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.GetTemplateDetailsWithValues(System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            GetTemplateDetailsWithValues
+            </summary>
+            <param name="NotificationTemplateId"></param>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.InActiveQuizList(QuizApp.Request.NotificationTemplateQuizListRequestModel)">
+            <summary>
+            Get inactiveList details of template type.
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.QuizTemplateList(QuizApp.Request.NotificationTemplateInActiveRequestModel)">
+            <summary>
+            Get activeList details of template type.
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.UnLinkAutomation(QuizApp.Services.Model.InactiveNotificationTemplate)">
+            <summary>
+            Set Quiz inactive in template
+            </summary>
+            <param name="notificationTemplateRequestObj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.NotificationTemplateController.LinkAutomation(QuizApp.Services.Model.InactiveNotificationTemplate)">
+            <summary>
+            Update quiz in template
+            </summary>
+            <param name="notificationTemplateRequestObj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuestionController.AddQuizQuestion(System.Int32,System.Nullable{System.Int32},System.Boolean)">
+            <summary>
+            Add Quiz Question
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuestionController.UpdateAnswerType(System.Int32,System.Int32,System.Nullable{System.Int32},System.Boolean,System.Boolean)">
+            <summary>
+            Update Quiz Answer type
+            </summary>
+            <param name="QuestionId"></param>
+            <param name="AnswerType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuestionController.GetQuestionMappedFieldValues(System.Int32,System.String)">
+            <summary>
+            Getting Mapped Object for Questions of a Quiz
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.AutomationController.GetAutomationDetails(System.Int32,System.String)">
+            <summary>
+            Get AutomationDetails
+            </summary>
+            <param name="ClientCode"></param>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.AutomationController.DeleteVerifyRequest(System.String,System.String)">
+            <summary>
+            Delete Verify Request for Automation
+            </summary>
+            <param name="LeadUserId"></param>
+            <param name="ConfigurationId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.AutomationController.DeleteVerifyRequest(System.String,System.String,System.String)">
+            <summary>
+            Delete Verify Request for Automation
+            </summary>
+            <param name="requestId"></param>
+            <param name="objectType"></param>
+            <param name="clientCode"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:QuizApp.Controllers.QuizAttemptController.AttemptQuiz(QuizApp.Services.Service.AttemptQuizRequest)" -->
+        <!-- Badly formed XML comment ignored for member "M:QuizApp.Controllers.QuizAttemptController.MarkQuizIncomplete(System.Int32)" -->
+        <member name="M:QuizApp.Controllers.QuizDuplicateController.AddQuestion(System.Int32,System.Int32)">
+            <summary>
+            Add Quiz Duplicate Question
+            </summary>
+            <param name="quizId"></param>
+            <param name="questionId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizDuplicateController.AddQuizResult(System.Int32,System.Int32)">
+            <summary>
+            Add Quiz Duplicate Result
+            </summary>
+            <param name="QuizId"></param>
+            <param name="quizResultId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizDuplicateController.OtherCompany(QuizApp.Request.DuplicateQuizRequest)">
+            <summary>
+            Duplicate Quiz By CompanyId
+            </summary>
+            <param name="duplicateQuizRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizListController.GetList(System.Boolean,System.Int64,System.String,System.String,System.String,System.Boolean,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Int32})">
+            <summary>
+            Get Quiz List
+            </summary>
+            <param name="IncludeSharedWithMe"></param>
+            <param name="OffsetValue"></param>
+            <param name="SearchTxt"></param>
+            <param name="OrderBy"></param>
+            <param name="QuizTypeId"></param>
+            <param name="IsDataforGlobalOfficeAdmin"></param>
+            <param name="OfficeIdList"></param>
+            <param name="QuizId"></param>
+            <param name="IsFavorite"></param>
+            <param name="IsPublished"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizListController.GetList(System.Boolean,System.Int64,System.String,System.Nullable{System.Int32},System.String,System.Boolean,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})">
+            <summary>
+            Get Quiz List
+            </summary>
+            <param name="IncludeSharedWithMe"></param>
+            <param name="OffsetValue"></param>
+            <param name="SearchTxt"></param>
+            <param name="OrderBy"></param>
+            <param name="QuizTypeId"></param>
+            <param name="IsDataforGlobalOfficeAdmin"></param>
+            <param name="OfficeIdList"></param>
+            <param name="PageNo"></param>
+            <param name="PageSize"></param>
+            <param name="QuizId"></param>
+            <param name="IsFavorite"></param>
+            <param name="MustIncludeQuizId"></param>
+            <param name="UsageType"></param>
+            <param name="QuizTagId"></param>
+            <param name="IsWhatsAppChatBotOldVersion"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizListController.GetList(System.Int32,System.Int32,System.Boolean,System.Int64,System.String,System.Int32,System.String,System.Boolean,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Get Quiz List with Pagination
+            </summary>
+            <param name="PageNo"></param>
+            <param name="PageSize"></param>
+            <param name="IncludeSharedWithMe"></param>
+            <param name="OffsetValue"></param>
+            <param name="SearchTxt"></param>
+            <param name="OrderBy"></param>
+            <param name="QuizTypeId"></param>
+            <param name="IsDataforGlobalOfficeAdmin"></param>
+            <param name="OfficeIdList"></param>
+            <param name="QuizId"></param>
+            <param name="IsFavorite"></param>
+            <param name="IsPublished"></param>
+            <param name="QuizTagId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizListController.AutomationReportList(QuizApp.Request.QuizListRequest)">
+            <summary>
+            Get Quiz List in AutomationReportList 
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizListController.ReportList(QuizApp.Request.AutomationListRequest)">
+            <summary>
+            Get Quiz List in ReportList
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.CreateQuiz(QuizApp.Request.AddQuizRequest)">
+            <summary>
+            Create a new Quiz
+            </summary>
+            <returns></returns>
+            <param name="Obj"></param>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateQuiz(QuizApp.Request.UpdateQuizRequest)">
+            <summary>
+            Update Quiz
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateBrandingAndStyle(QuizApp.Request.BrandingAndStyleRequest)">
+            <summary>
+            Update Branding and Style
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizBrandingAndStyle(System.Int32)">
+            <summary>
+            Get Quiz Branding and Style
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateQuizAccessSetttings(QuizApp.Request.QuizAccessSettingRequest)">
+            <summary>
+            Update Quiz Access Setting
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizAccessSetting(System.Int32)">
+            <summary>
+            Get Quiz Access Setting
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateQuizSocialShareSetting(QuizApp.Request.QuizSocialShareSettingRequest)">
+            <summary>
+            Update Quiz Social Share Setting
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizSocialShareSetting(System.Int32)">
+            <summary>
+            Get Quiz Social Share Setting
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizCoverDetails(System.Int32)">
+            <summary>
+            Get Quiz Cover Details
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateQuizCoverDetails(QuizApp.Request.QuizCoverDetailRequest)">
+            <summary>
+            Update Quiz Cover Details
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateQuizCoverImage(QuizApp.Request.QuizCoverImageRequest)">
+            <summary>
+            Update Quiz Cover Image
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UploadImage(System.String)">
+            <summary>
+            Upload Image
+            </summary>
+            <param name="ImageString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizQuestionDetails(System.Int32,System.Int32)">
+            <summary>
+            Get Quiz Question Details
+            </summary>
+            <param name="QuestionId"></param>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateQuizCorrectAnswerSetting(QuizApp.Request.QuizCorrectAnswerSettingRequest)">
+            <summary>
+            Update Quiz Correct Answer Setting
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateQuizQuestionDetails(QuizApp.Request.QuizQuestionDetailsRequest,System.Boolean)">
+            <summary>
+            Update Quiz Question Details
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.AddAnswerOptionInQuestion(System.Int32)">
+            <summary>
+            Add Answer Option in Question
+            </summary>
+            <param name="QuestionId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.RemoveAnswer(System.Int32)">
+            <summary>
+            Remove Answer
+            </summary>
+            <param name="AnswerId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.RemoveQuestion(System.Int32)">
+            <summary>
+            Remove Question
+            </summary>
+            <param name="QuestionId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.ReorderQuestionAnswerAndContent(System.Boolean,System.Collections.Generic.List{QuizApp.Request.QuizReorderQuestionAnswerRequest})">
+            <summary>
+            Reorder Question Answer
+            </summary>
+            <param name="IsQuesAndContentInSameTable"></param>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.ReorderAnswer(QuizApp.Request.QuizReorderAnswerRequest)">
+            <summary>
+            Reorder Answer
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.AddQuizResult(System.Int32)">
+            <summary>
+            Add Quiz Result
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateQuizResult(QuizApp.Request.QuizResultRequest)">
+            <summary>
+            Update Quiz Result
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateResultSetting(QuizApp.Request.QuizResultSettingRequest)">
+            <summary>
+            Update Quiz Result Setting
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizResultDetails(System.Int32,System.Int32)">
+            <summary>
+            Get Quiz Result Details
+            </summary>
+            <param name="ResultId"></param>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.RemoveQuizResult(System.Int32)">
+            <summary>
+            Remove Quiz Result
+            </summary>
+            <param name="ResultId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizDetails(System.Int32)">
+            <summary>
+            Get Quiz Details
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizBranchingLogicData(System.Int32)">
+            <summary>
+            Get Quiz BranchingLogic Data
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizResults(System.Int32)">
+            <summary>
+            Get Quiz Results
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateQuizBranchingLogic(QuizApp.Request.QuizBranchingLogicLinksListRequest)">
+            <summary>
+            Update Quiz BranchingLogic
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.PublishQuiz(System.Int32)">
+            <summary>
+            Publish Quiz
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.DuplicateQuiz(System.Int32,System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Duplicate Quiz
+            </summary>
+            <param name="QuizId"></param>
+            <param name="AccessibleOfficeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.RemoveQuiz(System.Int32)">
+            <summary>
+            Remove Quiz
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.AttemptQuiz(System.Collections.Generic.List{QuizApp.Request.TextAnswerRequest},System.String,System.String,System.String,System.Int32,System.String,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Boolean)">
+            <summary>
+            Attempt Quiz
+            </summary>
+            <param name="Obj"></param>
+            <param name="QuizCode"></param>
+            <param name="Mode"></param>
+            <param name="Type"></param>
+            <param name="QuestionId"></param>
+            <param name="AnswerId"></param>
+            <param name="UserTypeId"></param>
+            <param name="QuestionType"></param>
+            <param name="UsageType"></param>
+            <param name="OptimizeCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizRedirectResult(System.Int32)">
+            <summary>
+            Get Quiz Redirect Result
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateQuizRedirectResult(System.Collections.Generic.List{QuizApp.Request.QuizResultRedirectRequest})">
+            <summary>
+            Update Quiz Redirect Result
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateBranchingLogicState(System.Int32,System.Boolean)">
+            <summary>
+             Update Branching Logic State
+            </summary>
+            <param name="QuizId"></param>
+            <param name="IsEnabled"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizListByVersions(System.Int32,System.Int64)">
+            <summary>
+            Get quiz list by versions
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizAnalyticsOverview(System.Int32)">
+            <summary>
+            Get quiz analytics overview
+            </summary>
+            <param name="PublishedQuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizAnalyticsStats(System.Int32)">
+            <summary>
+            Get quiz analytics stats
+            </summary>
+            <param name="PublishedQuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizAttemptCode(System.String,System.Int32,System.String,System.Int32,System.String,System.String,System.String,System.String)">
+            <summary>
+            Get quiz attempt code
+            </summary>
+            <param name="PublishedCode"></param>
+            <param name="Mode"></param>
+            <param name="UserTypeId"></param>
+            <param name="UserId"></param>
+            <param name="WorkPackageInfoId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.SaveLeadUserInfo(QuizApp.Request.LeadUserRequest)">
+            <summary>
+            Save lead user info
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizLeadCollectionStats(System.Int32)">
+            <summary>
+            Get quiz lead collection stats
+            </summary>
+            <param name="PublishedQuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.AddActionInQuiz(System.Int32)">
+            <summary>
+            Add Action in Quiz
+            </summary>
+            <param name="quizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateActionInQuiz(QuizApp.Request.QuizActionRequest)">
+            <summary>
+            update Action in Quiz
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.RemoveActionInQuiz(System.Int32)">
+            <summary>
+            Remove Action in Quiz
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizActionDetail(System.Int32)">
+            <summary>
+            Get Action by Id
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.AddContentInQuiz(System.Int32)">
+            <summary>
+            Add Content in Quiz
+            </summary>
+            <param name="quizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateContentInQuiz(QuizApp.Request.QuizContentRequest)">
+            <summary>
+            Update Content in Quiz
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.RemoveContentInQuiz(System.Int32)">
+            <summary>
+            Remove Content in Quiz
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizContentDetail(System.Int32,System.Int32)">
+            <summary>
+            Get Content by Id
+            </summary>
+            <param name="Id"></param>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.AddAttachmentInQuiz(QuizApp.Request.QuizAttachmentRequest)">
+            <summary>
+            Add Attachment in Quiz
+            </summary>
+            <param name="Quiz"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetAttachmentsInQuiz(System.Int32)">
+            <summary>
+            Get All Attachments in Quiz
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.QuizShareSetting(QuizApp.Request.QuizShareRequest)">
+            <summary>
+            Quiz Share Setting
+            </summary>
+            <param name="Quiz"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizShareSetting(System.Int32)">
+            <summary>
+            Get Quiz Share Setting
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.AddBadgeInQuiz(System.Int32)">
+            <summary>
+            Add Badge in Quiz
+            </summary>
+            <param name="Quiz"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.RemoveBadgeInQuiz(System.Int32)">
+            <summary>
+            Remove Badge in Quiz
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateBadgeInQuiz(QuizApp.Request.QuizBadgeRequest)">
+            <summary>
+            Update Badge in Quiz
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetBadgeInQuiz(System.Int32,System.Int32)">
+            <summary>
+            Get Badge in Quiz
+            </summary>
+            <param name="Id"></param>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetTagsByCategory(System.String)">
+            <summary>
+            To get tags by category
+            </summary>
+            <param name="tagCategoryId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetAllCategory">
+            <summary>
+            To get all categories
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.RemoveTag(System.Int32)">
+            <summary>
+            To Remove Tag from answer
+            </summary>
+            <param name="TagId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateAnswerTagAndCategory(System.Collections.Generic.List{QuizApp.Request.QuizAnsweTagsRequest})">
+            <summary>
+            To UpdateAnswerTagAndCategory
+            </summary>
+            <param name="quizAnsweTags"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetAttemptedQuizDetailByLead(System.String,System.Int32,System.String)">
+            <summary>
+            To get details of Attempted Quiz by a lead
+            </summary>
+            <param name="LeadId"></param>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.RemoveCategory(System.Int32)">
+            <summary>
+            To Remove Category
+            </summary>
+            <param name="CategoryId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateResultRange(QuizApp.Request.QuizResultRangeRequest)">
+            <summary>
+            to update result range
+            </summary>
+            <param name="quizResultRangeObj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetVariablesByQuizId(System.Int32)">
+            <summary>
+            To Get Variables By Quiz Id
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizResultAndAction(System.Int32)">
+            <summary>
+            GetQuizResultAndAction
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizAllResultAndAction(System.Int32)">
+            <summary>
+            GetQuizAllResultAndAction
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetResultCorrelation(System.Int32)">
+            <summary>
+            Get relation based on question Id
+            </summary>
+            <param name="questionId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateResultCorrelation(QuizApp.Request.ResultCorrelationRequest)">
+            <summary>
+            Update answer and result relationship
+            </summary>
+            <param name="resultCorrelationRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.ReorderResult(QuizApp.Request.QuizResultReorderRequest)">
+            <summary>
+            reorder result
+            </summary>
+            <param name="quizResultReorderRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetPersonalityResultSetting(System.Int32)">
+            <summary>
+            Get personality result setting
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdatePersonalityResultSetting(QuizApp.Request.PersonalityResultSettingRequest)">
+            <summary>
+            Update personality result setting
+            </summary>
+            <param name="personalityResultSettingRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdatePersonalityResultStatus(System.Int32,System.Int32)">
+            <summary>
+            Update personality result status
+            </summary>
+            <param name="QuizId"></param>
+            <param name="status"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdatePersonalityWidthSetting(System.Int32,System.Boolean)">
+            <summary>
+            Update personality full width stting
+            </summary>
+            <param name="QuizId"></param>
+            <param name="IsFullWidthEnable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdatePersonalityMaxResult(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Update personality max result
+            </summary>
+            <param name="QuizId"></param>
+            <param name="maxResult"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetAttemptedAutomationByLeads(System.String,System.Int32)">
+            <summary>
+            To get details of Attempted Quiz by a lead
+            </summary>
+            <param name="LeadId"></param>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetAttemptedAutomationAcheivedResultDetailsByLeads(System.Collections.Generic.List{System.String},System.Int32)">
+            <summary>
+            To Get Attempted Automation AcheivedResult Details By Leads
+            </summary>
+            <param name="LeadID"></param>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UploadAttachment">
+            <summary>
+            Upload
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.RemoveAttachment(System.String)">
+            <summary>
+            RemoveAttachment
+            </summary>
+            <param name="FileIdentifier"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateQuizQuestionSetting(QuizApp.Request.QuizQuestionSettingRequest)">
+            <summary>
+            Update Quiz Question Setting
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateQuizSetting(QuizApp.Request.UpdateQuizSettingRequest)">
+            <summary>
+            Update Quiz Question Setting
+            </summary>
+            <param name="Obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateContenSettingtInQuiz(QuizApp.Request.QuizContentSettingRequest)">
+            <summary>
+            Update Content in Quiz
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateCoverSettingtInQuiz(QuizApp.Request.QuizCoverSettingRequest)">
+            <summary>
+            Update CoverSetting in Quiz
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizPreviousQuestionSetting(System.Int32)">
+            <summary>
+            Get Quiz Previous Question Setting
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetDynamicFieldByQuizId(System.Int32)">
+            <summary>
+            GetDynamicFieldByQuizId
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetUrlValueByKey(System.String,System.String)">
+            <summary>
+            To Get Url Value by Key and Domain
+            </summary>
+            <param name="Key"></param>
+            <param name="DomainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateAnswerObjectFieldsDetails(System.Collections.Generic.List{QuizApp.Request.AnswerObjectFieldsRequest})">
+            <summary>
+            UpdateAnswerObjectFieldsDetails
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.RemoveAnswerObjectFieldsDetails(System.Int32)">
+            <summary>
+            RemoveAnswerObjectFieldsDetails
+            </summary>
+            <param name="AnswerId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateQuizUsageTypeandTagDetails(QuizApp.Request.QuizUsageTypeandTagDetailsRequest)">
+            <summary>
+            UpdateQuizUsageType
+            </summary>
+            <param name="QuizId"></param>
+            <param name="UsageType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetQuizUsageTypeDetails(System.Int32)">
+            <summary>
+            Quiz UsageType Details Response
+            </summary>
+            <param name="QuizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.GetAutomationTagsList">
+            <summary>
+            Get Automation Tags List
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.QuizController.UpdateAnswerOptionValues(System.Int32,System.Collections.Generic.List{System.String})">
+            <summary>
+            Update Answer Option Values
+            </summary>
+            <param name="AnswerId"></param>
+            <param name="ListValues"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.ReminderSettingController.GetReminderSettings(System.String)">
+            <summary>
+            Get reminder settings
+            </summary>
+            <param name="OfficeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.ReminderSettingController.SaveReminderSettings(QuizApp.Request.ReminderSettingRequest)">
+            <summary>
+            Save reminder settings
+            </summary>
+            <param name="ReminderSettingRequestObj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.ReportingController.GetQuizReportDetails(System.String,System.DateTime,System.DateTime,System.String,System.String)">
+            <summary>
+            Get quiz report details
+            </summary>
+            <param name="QuizIdCSV"></param>
+            <param name="fromDate"></param>
+            <param name="toDate"></param>
+            <param name="numerator"></param>
+            <param name="denominator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.ReportingController.GetQuizReport(System.Int32,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int32})">
+            <summary>
+            To Get Quiz Report
+            </summary>
+            <param name="QuizId"></param>
+            <param name="SourceId"></param>
+            <param name="FromDate"></param>
+            <param name="ToDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.ReportingController.GetQuizLeadReport(System.Int32,System.String)">
+            <summary>
+            GetQuizLeadReport
+            </summary>
+            <param name="QuizId"></param>
+            <param name="LeadUserId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.ReportingController.GetNPSAutomationReport(System.Int32,System.String,System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int32})">
+            <summary>
+            To Get NPS Quiz Report
+            </summary>
+            <param name="QuizId"></param>
+            <param name="SourceId"></param>
+            <param name="ChartView"></param>
+            <param name="FromDate"></param>
+            <param name="ToDate"></param>
+            <param name="ResultId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.ReportingController.GetQuizTemplateReport(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int32})">
+            <summary>
+            To Get Quiz Template Report
+            </summary>
+            <param name="TemplateId"></param>
+            <param name="FromDate"></param>
+            <param name="ToDate"></param>
+            <param name="ResultId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.ReportingController.GetTemplateLeadReport(System.String,System.String)">
+            <summary>
+            To Get Quiz Template Lead Report
+            </summary>
+            <param name="TemplateId"></param>
+            <param name="LeadUserId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.ReportingController.GetNPSTemplateAutomationReport(System.String,System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int32})">
+            <summary>
+            To Get NPS Template Automation Report
+            </summary>
+            <param name="TemplateId"></param>
+            <param name="ChartView"></param>
+            <param name="FromDate"></param>
+            <param name="ToDate"></param>
+            <param name="ResultId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.ReportingController.GetTemplateQuizDetails(System.String)">
+            <summary>
+            To Get Template Quiz Details
+            </summary>
+            <param name="TemplateId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.ReportingController.GetAttemptedQuizDetails(System.String,System.Int32,System.String)">
+            <summary>
+            Get Questions and Answers of AttemptedQuiz by QuizAttemptId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.TemplateController.GetTemplateList(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            To Get Templates By category and quiz type
+            </summary>
+            <param name="QuizType"></param>
+            <param name="CategoryId"></param>
+            <param name="PageNo"></param>
+            <param name="PageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.TemplateController.GetDashboardTemplates(System.Int64,System.String,System.String,System.Int32,System.Int32,System.String,System.Int32)">
+            <summary>
+            to get All Templates
+            </summary>
+            <param name="OffsetValue"></param>
+            <param name="QuizTypeId"></param>
+            <param name="CategoryId"></param>
+            <param name="PageNo"></param>
+            <param name="PageSize"></param>
+            <param name="SearchTxt"></param>
+            <param name="OrderByDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.TemplateController.SetTemplateActive(System.Int32,System.Int32)">
+            <summary>
+            To Set Template status
+            </summary>
+            <param name="Id"></param>
+            <param name="TemplateStatus"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.MasterListController.GetVariablesFields(System.String,System.String)">
+            <summary>
+            Get List Map fields
+            used in variable popup for automation/appointment
+            </summary>
+            <param name="clientCode"></param>
+            <param name="objects"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.WhatsAppTemplateController.GetWhatsAppHSMTemplates(System.String,System.String)">
+            <summary>
+            Get WhatsApp HSM Templates by clientCode
+            </summary>
+            <param name="clientCode"></param>
+            <param name="templatesType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.WhatsAppTemplateController.GetWhatsAppTemplatesLanguages(System.String,System.String)">
+            <summary>
+            Get WhatsApp Templates Languages
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.WhatsAppTemplateController.AddQuizWhatsAppTemplate(System.Int32,System.Int32,System.String)">
+            <summary>
+            Add Quiz Question
+            </summary>
+            <param name="QuizId"></param>
+            <param name="templateId"></param>
+            <param name="language"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.WhatsAppTemplateController.GetContactInfoWhatsapp(System.String,System.String)">
+            <summary>
+            Get Communication Contact info for Dynamic Variables
+            </summary>
+            <param name="clientCode"></param>
+            <param name="contactId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.WhatsAppTemplateController.HSMTemplateDetails(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Get HSM Template Details
+            </summary>
+            <param name="clientCode"></param>
+            <param name="moduleType"></param>
+            <param name="languageCode"></param>
+            <param name="templateId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Controllers.UserController.GetUserListByOfficeId(System.String)">
+            <summary>
+            Get users related to specific office
+            </summary>
+            <param name="OfficeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.Helpers.ErrorLog.LogError(System.Exception)">
+            <summary>
+            Log error to Elmah
+            </summary>
+        </member>
+        <member name="M:QuizApp.RepositoryPattern.AutomationContextPool.GetSingletonContext">
+            <summary>
+            Returns an application-lifetime context
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizApp.RepositoryPattern.AutomationContextPool.GetScopedContext">
+            <summary>
+            Returns a request-lifetime context
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
