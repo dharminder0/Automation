@@ -1,0 +1,359 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "organization": {
+      "defaultValue": "Jr-",
+      "type": "string"
+    },
+    "module": {
+      "defaultValue": "06-Auto-",
+      "type": "string",
+      "allowedValues": [
+        "01-Core-",
+        "02-Cont-",
+        "03-Camp-",
+        "04-Extr-",
+        "05-Canv-",
+        "06-Auto-",
+        "07-Appt-",
+        "08-Rprt-",
+        "09-Spel-",
+        "10-Fore-",
+        "11-Comm-",
+        "12-Acnt-",
+        "13-Elrn-",
+        "14-Seop-",
+        "15-Kwrd-",
+        "16-Jsrch-"
+      ]
+    },
+    "client": {
+      "defaultValue": "Shared-",
+      "type": "string",
+      "allowedValues": [
+        "Shared-",
+        "Oly-",
+        "Wt-",
+        "At-",
+        "Usg-",
+        "Hema-",
+        "Demo-"
+      ]
+    },
+    "project": {
+      "defaultValue": "Api-",
+      "type": "string",
+      "allowedValues": [
+        "Api-",
+        "Ui-",
+        "Client-",
+        "App-",
+        "Land-",
+        "Mebc-"
+      ]
+    },
+    "hostLocation": {
+      "defaultValue": "Weu-",
+      "type": "string",
+      "allowedValues": [
+        "Weu-",
+        "Neu-"
+      ]
+    },
+    "environment": {
+      "defaultValue": "Test",
+      "type": "string",
+      "allowedValues": [
+        "",
+        "Test",
+        "Prod",
+        "Acc",
+        "Staging",
+        "Dev",
+        "Prod-Fo"
+      ]
+    },
+    "must-create-app-plan": {
+      "defaultValue": false,
+      "type": "bool",
+      "allowedValues": [
+        true,
+        false
+      ]
+    },
+    "hostingPlanGroup": {
+      "defaultValue": "",
+      "type": "string"
+    },
+    "appServicePlan": {
+      "defaultValue": "WEU-B3",
+      "type": "string"
+    },
+    "customdomain": {
+      "defaultValue": "",
+      "type": "string"
+    },
+    "db_login_user": {
+      "type": "securestring"
+    },
+    "db_login_pass": {
+      "type": "securestring"
+    },
+    "sqlserverName": {
+      "defaultValue": "volserver",
+      "type": "securestring"
+    },
+    "skuName": {
+      "type": "string",
+      "defaultValue": "D1",
+      "allowedValues": [
+        "F1",
+        "D1",
+        "B1",
+        "B2",
+        "B3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "metadata": {
+        "description": "Describes plan's pricing tier and instance size. Check details at https://azure.microsoft.com/en-us/pricing/details/app-service/"
+      }
+    },
+    "skuCapacity": {
+      "type": "int",
+      "defaultValue": 1,
+      "minValue": 1,
+      "metadata": {
+        "description": "Describes plan's instance count"
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "West Europe",
+      "metadata": {
+        "description": "Location for all resources."
+      }
+    },
+    "databaseName": {
+      "type": "string",
+      "defaultValue": "Jr-06-Auto-Shared-Db-Weu-Test",
+      "metadata": {
+        "description": "Database name."
+      }
+    },
+    "WEBJOBS_ROOT_PATH": {
+      "type": "securestring"
+    },
+    "SCM_COMMAND_IDLE_TIMEOUT": {
+      "type": "securestring"
+    },
+    "WEBJOBS_IDLE_TIMEOUT": {
+      "type": "securestring"
+    }
+  },
+  "variables": {
+    "prefix": "[concat(parameters('organization'), parameters('module'), parameters('client'))]",
+    "websiteName": "[concat(variables('prefix'), parameters('project'), parameters('hostLocation'), parameters('environment'))]",
+    "hostingPlanName": "[concat(parameters('organization'), 'Plan-', parameters('appServicePlan'))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2016-03-01",
+      "name": "[variables('hostingPlanName')]",
+      "type": "Microsoft.Web/serverfarms",
+      "location": "[parameters('location')]",
+      "condition": "[parameters('must-create-app-plan')]",
+      "tags": {
+        "displayName": "HostingPlan",
+        "client": "[replace(parameters('client'),'-', '')]"
+      },
+      "sku": {
+        "name": "[parameters('skuName')]",
+        "capacity": "[parameters('skuCapacity')]"
+      },
+      "properties": {
+        "name": "[variables('hostingPlanName')]"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2016-08-01",
+      "name": "[variables('websiteName')]",
+      "location": "[parameters('location')]",
+      "kind": "app",
+      "dependsOn": [
+        "[variables('hostingPlanName')]"
+      ],
+      "tags": {
+        "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName')))]": "empty",
+        "displayName": "Website",
+        "client": "[replace(parameters('client'),'-', '')]"
+      },
+      "properties": {
+        "name": "[variables('websiteName')]",
+        "WEBSITE_LOCAL_CACHE_OPTION": "Always",
+        "WEBSITE_LOCAL_CACHE_SIZEINMB": "2000",
+        "enabled": true,
+        "hostNameSslStates": [
+          {
+            "name": "[concat(variables('websiteName'), '.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "hostType": "Standard"
+          },
+          {
+            "name": "[concat(variables('websiteName'), '.scm.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "hostType": "Repository"
+          },
+          {
+            "name": "(parameters('customdomain')",
+            "sslState": "Disabled",
+            "hostType": "Standard"
+          }
+        ],
+        "serverFarmId": "[resourceId(parameters('hostingPlanGroup'),'Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+        "reserved": false,
+        "scmSiteAlsoStopped": false,
+        "clientAffinityEnabled": true,
+        "clientCertEnabled": false,
+        "hostNamesDisabled": false,
+        "containerSize": 0,
+        "dailyMemoryTimeQuota": 0,
+        "httpsOnly": false,
+        "siteConfig": {
+          "appSettings": [
+            {
+              "name": "WEBJOBS_ROOT_PATH",
+              "value": "[parameters('WEBJOBS_ROOT_PATH')]"
+            },
+            {
+              "name": "SCM_COMMAND_IDLE_TIMEOUT",
+              "value": "[parameters('SCM_COMMAND_IDLE_TIMEOUT')]"
+            },
+            {
+              "name": "WEBJOBS_IDLE_TIMEOUT",
+              "value": "[parameters('WEBJOBS_IDLE_TIMEOUT')]"
+            }
+          ],
+          "connectionStrings": [
+            {
+              "name": "QuizAppDBContext",
+              "connectionString": "[concat('Data Source=', parameters('sqlserverName'),'.database.windows.net',';initial catalog=', parameters('databaseName'),';User Id=',parameters('db_login_user'),';Password=',parameters('db_login_pass'),';MultipleActiveResultSets=True;PersistSecurityInfo=True;App=EntityFramework')]",
+              "type": "SQLAzure"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2016-08-01",
+      "name": "[concat(variables('websiteName'), '/web')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('websiteName'))]"
+      ],
+      "properties": {
+        "numberOfWorkers": 1,
+        "defaultDocuments": [
+          "Default.htm",
+          "Default.html",
+          "Default.asp",
+          "index.htm",
+          "index.html",
+          "iisstart.htm",
+          "default.aspx",
+          "index.php",
+          "hostingstart.html"
+        ],
+        "netFrameworkVersion": "v4.0",
+        "phpVersion": "5.6",
+        "pythonVersion": "",
+        "nodeVersion": "",
+        "linuxFxVersion": "",
+        "requestTracingEnabled": false,
+        "remoteDebuggingEnabled": false,
+        "remoteDebuggingVersion": "VS2017",
+        "httpLoggingEnabled": false,
+        "logsDirectorySizeLimit": 35,
+        "detailedErrorLoggingEnabled": false,
+        "publishingUsername": "[concat('$',variables('websiteName'))]",
+        "scmType": "VSTSRM",
+        "use32BitWorkerProcess": true,
+        "webSocketsEnabled": false,
+        "alwaysOn": false,
+        "appCommandLine": "",
+        "managedPipelineMode": "Integrated",
+        "virtualApplications": [
+          {
+            "virtualPath": "/",
+            "physicalPath": "site\\wwwroot",
+            "preloadEnabled": false,
+            "virtualDirectories": null
+          }
+        ],
+        "winAuthAdminState": 0,
+        "winAuthTenantState": 0,
+        "customAppPoolIdentityAdminState": false,
+        "customAppPoolIdentityTenantState": false,
+        "loadBalancing": "LeastRequests",
+        "routingRules": [],
+        "experiments": {
+          "rampUpRules": []
+        },
+        "autoHealEnabled": false,
+        "vnetName": "",
+        "siteAuthEnabled": false,
+        "siteAuthSettings": {
+          "enabled": null,
+          "unauthenticatedClientAction": null,
+          "tokenStoreEnabled": null,
+          "allowedExternalRedirectUrls": null,
+          "defaultProvider": null,
+          "clientId": null,
+          "clientSecret": null,
+          "clientSecretCertificateThumbprint": null,
+          "issuer": null,
+          "allowedAudiences": null,
+          "additionalLoginParams": null,
+          "isAadAutoProvisioned": false,
+          "googleClientId": null,
+          "googleClientSecret": null,
+          "googleOAuthScopes": null,
+          "facebookAppId": null,
+          "facebookAppSecret": null,
+          "facebookOAuthScopes": null,
+          "twitterConsumerKey": null,
+          "twitterConsumerSecret": null,
+          "microsoftAccountClientId": null,
+          "microsoftAccountClientSecret": null,
+          "microsoftAccountOAuthScopes": null
+        },
+        "localMySqlEnabled": false,
+        "http20Enabled": false,
+        "minTlsVersion": "1.0",
+        "ftpsState": "AllAllowed",
+        "reservedInstanceCount": 0
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/hostNameBindings",
+      "apiVersion": "2018-11-01",
+      "name": "[concat(variables('websiteName'), '/',parameters('customdomain'))]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('websiteName'))]"
+      ],
+      "properties": {
+        "siteName": "[variables('websiteName')]",
+        "hostNameType": "Verified"
+      }
+    }
+  ]
+}

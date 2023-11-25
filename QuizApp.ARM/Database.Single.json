@@ -1,0 +1,118 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "organization": {
+      "defaultValue": "Jr-",
+      "type": "string"
+    },
+    "module": {
+            "defaultValue": "06-Auto-",
+            "type": "string",
+            "allowedValues": [
+                "01-Core-",
+                "02-Cont-",
+                "03-Camp-",
+                "04-Extr-",
+                "05-Canv-",
+                "06-Auto-",
+                "07-Appt-",
+                "08-Rprt-",
+                "09-Spel-",
+                "10-Fore-",
+                "11-Comm-",
+                "12-Acnt-",
+                "13-Elrn-",
+                "14-Seop-",
+                "15-Kwrd-"
+            ]
+    },
+     "client": {
+      "defaultValue": "Shared-",
+      "type": "string",
+      "allowedValues": [
+        "Shared-",
+        "Oly-",
+        "Wt-",
+        "At-",
+        "Usg-",
+        "Hema-",
+        "Usgbe-"
+      ]
+    },
+    "hostLocation": {
+      "defaultValue": "Weu-",
+      "type": "string",
+      "allowedValues": [
+        "Weu-",
+        "Nou-"
+      ]
+    },
+    "environment": {
+      "defaultValue": "Test",
+      "type": "string",
+      "allowedValues": [
+        "",
+        "Test",
+        "Prod",
+        "Acc",
+        "Staging",
+        "Dev"
+      ]
+    },
+    "sqlserverName": {
+      "defaultValue": "volserver",
+      "type": "securestring"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "West Europe",
+      "metadata": {
+        "description": "Location for all resources."
+      }
+    },
+    "edition": {
+      "type": "string",
+      "defaultValue": "Basic",
+      "allowedValues": [
+        "Basic",
+        "Standard",
+        "Premium"
+      ]
+    },
+    "databaseCollation": {
+      "type": "string",
+      "defaultValue": "SQL_Latin1_General_CP1_CI_AS",
+      "metadata": {
+        "description": "The SQL Database collation."
+      }
+    }
+  },
+  "variables": {
+    "prefix": "[concat(parameters('organization'),parameters('module'),parameters('client'))]",
+    "databaseName": "[concat(variables('prefix'),'Db-', parameters('hostLocation'), parameters('environment'))]",
+    "sqlserverName": "[parameters('sqlserverName')]"
+  },
+    "resources": [
+      {
+        "type": "Microsoft.Sql/servers/databases",
+        "apiVersion": "2017-10-01-preview",
+        "location": "[parameters('location')]",
+        "tags": {
+          "client": "[replace(parameters('client'),'-', '')]"
+        },
+        "name": "[concat(variables('sqlserverName'), '/', variables('databaseName'))]",
+        "properties": {
+          "collation": "[parameters('databaseCollation')]",
+          "maxSizeBytes": "1073741824",
+          "zoneRedundant": "false",
+          "catalogCollation": "[parameters('databaseCollation')]"
+        },
+        "sku": {
+          "name": "S0",
+          "tier": "[parameters('edition')]"
+        },
+        "kind": "v12.0,user"
+      }
+    ]
+  }

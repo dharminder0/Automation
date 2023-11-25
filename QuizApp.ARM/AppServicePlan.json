@@ -1,0 +1,98 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "organization": {
+      "defaultValue": "Jr-",
+      "type": "string"
+    },
+    "hostLocation": {
+      "defaultValue": "Weu-",
+      "type": "string",
+      "allowedValues": [
+        "Weu-",
+        "Neu-"
+      ]
+    },
+    "appServicePlan": {
+      "defaultValue": "WEU-B3",
+      "type": "string"
+    },
+    "client": {
+      "defaultValue": "Shared-",
+      "type": "string",
+      "allowedValues": [
+        "Shared-",
+        "Oly-",
+        "Wt-",
+        "At-",
+        "Usg-",
+        "Hema-",
+        "Demo-",
+        "Usgbe-"
+      ]
+    },
+    "skuName": {
+      "type": "string",
+      "defaultValue": "D1",
+      "allowedValues": [
+        "F1",
+        "D1",
+        "B1",
+        "B2",
+        "B3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "metadata": {
+        "description": "Describes plan's pricing tier and instance size. Check details at https://azure.microsoft.com/en-us/pricing/details/app-service/"
+      }
+    },
+    "skuCapacity": {
+      "type": "int",
+      "defaultValue": 1,
+      "minValue": 1,
+      "metadata": {
+        "description": "Describes plan's instance count"
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "West Europe",
+      "allowedValues": [
+        "West Europe",
+        "North Europe"
+      ],
+      "metadata": {
+        "description": "Location for all resources."
+      }
+    }
+  },
+  "variables": {
+    "hostingPlanName": "[concat(parameters('organization'), 'Plan-', parameters('hostLocation'), parameters('appServicePlan'))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2016-03-01",
+      "name": "[variables('hostingPlanName')]",
+      "type": "Microsoft.Web/serverfarms",
+      "location": "[parameters('location')]",
+      "tags": {
+        "displayName": "HostingPlan",
+        "client": "[replace(parameters('client'),'-', '')]"
+      },
+      "sku": {
+        "name": "[parameters('skuName')]",
+        "capacity": "[parameters('skuCapacity')]"
+      },
+      "properties": {
+        "name": "[variables('hostingPlanName')]"
+      }
+    }
+  ]
+}

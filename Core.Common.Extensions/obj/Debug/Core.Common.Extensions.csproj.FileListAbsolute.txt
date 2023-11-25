@@ -1,0 +1,8 @@
+E:\Projects\quiz-builder-api\Core.Common.Extensions\bin\Debug\Core.Common.Extensions.dll
+E:\Projects\quiz-builder-api\Core.Common.Extensions\bin\Debug\Core.Common.Extensions.pdb
+E:\Projects\quiz-builder-api\Core.Common.Extensions\bin\Debug\Newtonsoft.Json.dll
+E:\Projects\quiz-builder-api\Core.Common.Extensions\bin\Debug\Newtonsoft.Json.xml
+E:\Projects\quiz-builder-api\Core.Common.Extensions\obj\Debug\Core.Common.Extensions.csproj.CoreCompileInputs.cache
+E:\Projects\quiz-builder-api\Core.Common.Extensions\obj\Debug\Core.Common.Extensions.csproj.CopyComplete
+E:\Projects\quiz-builder-api\Core.Common.Extensions\obj\Debug\Core.Common.Extensions.dll
+E:\Projects\quiz-builder-api\Core.Common.Extensions\obj\Debug\Core.Common.Extensions.pdb

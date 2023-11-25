@@ -1,0 +1,2 @@
+[2021-09-13 12:38:13.4246] [Error] [API- https://accounts-api-test.jobrock.com/api/v1/integration/tags?clientCode=AABBH1BDBA&moduleName=Automation Exception- Unexpected character encountered while parsing value: <. Path '', line 0, position 0.]
+[2021-09-13 12:42:40.2249] [Error] [API- https://accounts-api-test.jobrock.com/api/v1/integration/tags?clientCode=AABBH1BDBA&moduleName=Automation Exception- Unexpected character encountered while parsing value: <. Path '', line 0, position 0.]

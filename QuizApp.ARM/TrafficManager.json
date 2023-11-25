@@ -1,0 +1,152 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "createTM": {
+      "type": "bool",
+      "defaultValue": true,
+      "allowedValues": [ true, false ]
+    },
+    "organization": {
+      "defaultValue": "Jr-",
+      "type": "string"
+    },
+    "module": {
+      "defaultValue": "01-Core-",
+      "type": "string",
+      "allowedValues": [
+        "01-Core-",
+        "02-Cont-",
+        "03-Camp-",
+        "04-Extr-",
+        "05-Canv-",
+        "06-Auto-",
+        "07-Appt-",
+        "08-Rprt-",
+        "09-Spel-",
+        "10-Fore-",
+        "11-Comm-",
+        "12-Acnt-",
+        "13-Elrn-",
+        "14-Seop-",
+        "15-Kwrd-"
+      ]
+    },
+    "client": {
+      "defaultValue": "Shared-",
+      "type": "string",
+      "allowedValues": [
+        "Shared-",
+        "Oly-",
+        "Wt-",
+        "At-",
+        "Usg-",
+        "Hema-",
+        "Demo-",
+        "Usgbe-"
+      ]
+    },
+    "project": {
+      "defaultValue": "Api-",
+      "type": "string",
+      "allowedValues": [
+        "Api-",
+        "Ui-",
+        "Client-",
+        "App-",
+        "Land-",
+        "Mebc-"
+      ]
+    },
+    "monitorConfigPath": {
+      "defaultValue": "/",
+      "type": "string"
+    },
+    "environment": {
+      "defaultValue": "Acc",
+      "type": "string",
+      "allowedValues": [
+        "",
+        "Test",
+        "Prod",
+        "Acc",
+        "Staging",
+        "Dev",
+        "Prod-Fo"
+      ]
+    } //,
+    //"website1Id": {
+    //  "defaultValue": "/subscriptions/46672989-5c13-48c6-959d-cebe8c3d62b9/resourceGroups/OLY-API-Prod/providers/Microsoft.Web/sites/WT-Client-Prod",
+    //  "type": "String"
+    //},
+    //"website2Id": {
+    //  "defaultValue": "/subscriptions/46672989-5c13-48c6-959d-cebe8c3d62b9/resourceGroups/OLY-API-Prod/providers/Microsoft.Web/sites/WT-Client-Prod-FO",
+    //  "type": "String"
+    //}
+  },
+  "variables": {
+    "prefix": "[concat(parameters('organization'), parameters('module'), parameters('client'))]",
+    "websiteName1": "[concat(variables('prefix'), parameters('project'), 'Weu-', parameters('environment'))]",
+    "websiteName2": "[concat(variables('prefix'), parameters('project'), 'Neu-', 'Prod-Fo')]",
+    "trafficMangerName": "[concat(variables('prefix'), parameters('project'), 'TM')]",
+    "website1Id": "[resourceId(resourceGroup().name, 'Microsoft.Web/sites', variables('websiteName1'))]",
+    "website2Id": "[resourceId(resourceGroup().name, 'Microsoft.Web/sites', variables('websiteName2'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Network/trafficManagerProfiles",
+      "apiVersion": "2018-04-01",
+      "name": "[variables('trafficMangerName')]",
+      "condition": "[parameters('createTM')]",
+      "location": "global",
+      "tags": {
+        "client": "[replace(parameters('client'),'-', '')]"
+      },
+      "properties": {
+        "profileStatus": "Enabled",
+        "trafficRoutingMethod": "Priority",
+        "dnsConfig": {
+          "relativeName": "[variables('trafficMangerName')]",
+          "ttl": 60
+        },
+        "monitorConfig": {
+          "protocol": "HTTPS",
+          "port": 443,
+          "path": "[parameters('monitorConfigPath')]",
+          "intervalInSeconds": 30,
+          "toleratedNumberOfFailures": 3,
+          "timeoutInSeconds": 10
+        },
+        "endpoints": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/trafficManagerProfiles', variables('trafficMangerName')), concat('/azureEndpoints/'), variables('trafficMangerName'),'-1')]",
+            "name": "[concat(variables('trafficMangerName'),'-1')]",
+            "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
+            "properties": {
+              "endpointStatus": "Enabled",
+              "targetResourceId": "[variables('website1Id')]",
+              "target": "[concat(variables('websiteName1'),'.azurewebsites.net')]",
+              "weight": 1,
+              "priority": 1,
+              "endpointLocation": "West Europe"
+            }
+          },
+          {
+            "id": "[concat(resourceId('Microsoft.Network/trafficManagerProfiles', variables('trafficMangerName')), concat('/azureEndpoints/'), variables('trafficMangerName'),'-2')]",
+            "name": "[concat(variables('trafficMangerName'),'-2')]",
+            "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
+            "properties": {
+              "endpointStatus": "Enabled",
+              "targetResourceId": "[variables('website2Id')]",
+              "target": "[concat(variables('websiteName2'),'.azurewebsites.net')]",
+              "weight": 1,
+              "priority": 2,
+              "endpointLocation": "North Europe"
+            }
+          }
+        ],
+        "trafficViewEnrollmentStatus": "Disabled"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<document>
+  <message name="Invitation_Subject">Subject.</message>
+  <message name="Invitation_Body">Body.</message>
+  <message name="Invitation_SMSText">SMS.</message>
+
+  <message name="Reminder_Subject">Subject.</message>
+  <message name="Reminder_Body">Body.</message>
+  <message name="Reminder_SMSText">SMS.</message>
+
+  <message name="Result_Subject">Subject.</message>
+  <message name="Result_Body">Body.</message>
+  <message name="Result_SMSText">SMS.</message>
+</document>

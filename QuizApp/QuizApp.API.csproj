@@ -1,0 +1,1835 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E3730BEA-4F60-45DD-898F-B597A8C53B13}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QuizApp</RootNamespace>
+    <AssemblyName>QuizApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>1</WarningLevel>
+    <DocumentationFile>bin\QuizApp.XML</DocumentationFile>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\QuizApp.XML</DocumentationFile>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.Contrib.WebApi, Version=1.0.10.25, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elmah.Contrib.WebApi.1.0.10.25\lib\net45\Elmah.Contrib.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.Mvc, Version=2.1.2.1389, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions, Version=6.1.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.6.1.0\lib\net47\FluentAssertions.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.10.3.3\lib\netstandard2.0\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.49.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.49\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Ignite.Security.Lib">
+      <HintPath>..\Dlls\Ignite.Security.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.18.0.315, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.18.0\lib\net452\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.18.0.315, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.18.0\lib\net452\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.18.0.315, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.18.0\lib\net452\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.18.0.315, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.18.0\lib\net452\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.18.0.315, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.18.0\lib\net452\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.18.0.315, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.18.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.8\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=3.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.3.0.5\lib\net461\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.13.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.13.1\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.13.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.13.1\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.13.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.13.1\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.23\lib\net461\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.19\lib\net461\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.9.3.3\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.7.11\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Swashbuckle.Examples, Version=3.12.0.0, Culture=neutral, PublicKeyToken=aa1e9c5053bfbe95, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Examples.3.12.0\lib\net40\Swashbuckle.Examples.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.13.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.13.1\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Unity.Abstractions, Version=5.11.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Abstractions.5.11.7\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.11.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Container.5.11.11\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.WebApi, Version=5.4.0.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.WebAPI.5.4.0\lib\net45\Unity.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Test.txt" />
+    <Content Include="Global.asax" />
+    <Content Include="NotificationDefaultTemplate.xml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\SwaggerConfig.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BranchingLogicController.cs" />
+    <Compile Include="Controllers\CacheController.cs" />
+    <Compile Include="Controllers\CommunicationController.cs" />
+    <Compile Include="Controllers\ConfigurationDetailsController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\CronController.cs" />
+    <Compile Include="Controllers\DebugController.cs" />
+    <Compile Include="Controllers\FieldSettingController.cs" />
+    <Compile Include="Controllers\IntegrationController.cs" />
+    <Compile Include="Controllers\NotificationTemplateController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\AutomationController.cs" />
+    <Compile Include="Controllers\QuizAttemptController.cs" />
+    <Compile Include="Controllers\QuizDuplicateController.cs" />
+    <Compile Include="Controllers\QuizListController.cs" />
+    <Compile Include="Controllers\QuizController.cs" />
+    <Compile Include="Controllers\ReminderSettingController.cs" />
+    <Compile Include="Controllers\ReportingController.cs" />
+    <Compile Include="Controllers\TemplateController.cs" />
+    <Compile Include="Controllers\MasterListController.cs" />
+    <Compile Include="Controllers\WhatsAppTemplateController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Db\AnswerOptionsInQuizQuestions.cs" />
+    <Compile Include="Db\ActionsInQuiz .cs" />
+    <Compile Include="Db\ApiUsageLogs.cs" />
+    <Compile Include="Db\AttachmentsInConfiguration.cs" />
+    <Compile Include="Db\AttachmentsInNotificationTemplate.cs" />
+    <Compile Include="Db\ConfigurationDetails.cs" />
+    <Compile Include="Db\ExternalActionQueue.cs" />
+    <Compile Include="Db\FavoriteQuizByUser.cs" />
+    <Compile Include="Db\FieldSyncSetting.cs" />
+    <Compile Include="Db\Languages.cs" />
+    <Compile Include="Db\LeadCalendarDataInAction.cs" />
+    <Compile Include="Db\LinkedCalendarInAction.cs" />
+    <Compile Include="Db\MediaVariablesDetails.cs" />
+    <Compile Include="Db\ModulePermissionsInQuiz.cs" />
+    <Compile Include="Db\ObjectFieldsInAnswer.cs" />
+    <Compile Include="Db\PendingApiQueue.cs" />
+    <Compile Include="Db\PersonalityAnswerResultMapping.cs" />
+    <Compile Include="Db\BadgesInQuiz.cs" />
+    <Compile Include="Db\Category.cs" />
+    <Compile Include="Db\Company.cs" />
+    <Compile Include="Db\LeadDataInAction.cs" />
+    <Compile Include="Db\PersonalityResultSetting.cs" />
+    <Compile Include="Db\QuizAnswerStats.cs" />
+    <Compile Include="Db\QuizComponentLogs.cs" />
+    <Compile Include="Db\AttemptQuizLog.cs" />
+    <Compile Include="Db\QuizTagDetails.cs" />
+    <Compile Include="Db\QuizObjectStats.cs" />
+    <Compile Include="Db\QuizUrlSetting.cs" />
+    <Compile Include="Db\QuizVariables.cs" />
+    <Compile Include="Db\ResultIdsInConfigurationDetails.cs" />
+    <Compile Include="Db\TagsInAnswer.cs" />
+    <Compile Include="Db\TemplateParameterInConfigurationDetails.cs" />
+    <Compile Include="Db\UsageTypeInQuiz.cs" />
+    <Compile Include="Db\UserPermissionsInQuiz .cs" />
+    <Compile Include="Db\AttachmentsInQuiz .cs" />
+    <Compile Include="Db\BranchingLogic.cs" />
+    <Compile Include="Db\ContentsInQuiz .cs" />
+    <Compile Include="Db\CoordinatesInBranchingLogic.cs" />
+    <Compile Include="Db\QuizAttempts.cs" />
+    <Compile Include="Db\NotificationTemplate.cs" />
+    <Compile Include="Db\NotificationTemplatesInQuiz.cs" />
+    <Compile Include="Db\QuestionsInQuiz.cs" />
+    <Compile Include="Db\Quiz.cs" />
+    <Compile Include="Db\QuizAppDBContext.cs" />
+    <Compile Include="Db\QuizBrandingAndStyle.cs" />
+    <Compile Include="Db\QuizDetails.cs" />
+    <Compile Include="Db\QuizQuestionStats.cs" />
+    <Compile Include="Db\QuizResults.cs" />
+    <Compile Include="Db\QuizStats.cs" />
+    <Compile Include="Db\ReminderQueues.cs" />
+    <Compile Include="Db\RemindersInQuiz.cs" />
+    <Compile Include="Db\ResultSettings.cs" />
+    <Compile Include="Db\UserAccessInQuiz.cs" />
+    <Compile Include="Db\UserTokens.cs" />
+    <Compile Include="Db\VariableInQuiz.cs" />
+    <Compile Include="Db\Variables.cs" />
+    <Compile Include="Db\VariablesDetails.cs" />
+    <Compile Include="Db\WhatsappLogging.cs" />
+    <Compile Include="Db\WorkPackageInfo.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\BlobStorageHelper.cs" />
+    <Compile Include="Helpers\CommonStaticData.cs" />
+    <Compile Include="Helpers\DecodeHtmlExtension.cs" />
+    <Compile Include="Helpers\WhatsaAppCommunicationHelper.cs" />
+    <Compile Include="Helpers\CommunicationHelper.cs" />
+    <Compile Include="Helpers\Enum.cs" />
+    <Compile Include="Helpers\ErrorLog.cs" />
+    <Compile Include="Helpers\IdGenerator.cs" />
+    <Compile Include="Helpers\Models.cs" />
+    <Compile Include="Helpers\AppointmentHelper.cs" />
+    <Compile Include="Helpers\NLogHelper.cs" />
+    <Compile Include="Helpers\PrerenderHelper.cs" />
+    <Compile Include="Helpers\OWCHelper.cs" />
+    <Compile Include="Helpers\Utility.cs" />
+    <Compile Include="Migrations\201802211418513_initial.cs" />
+    <Compile Include="Migrations\201802211418513_initial.Designer.cs">
+      <DependentUpon>201802211418513_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802220832158_UserToken.cs" />
+    <Compile Include="Migrations\201802220832158_UserToken.Designer.cs">
+      <DependentUpon>201802220832158_UserToken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802261413133_QuizBrandingAndStyle_ColNameChange.cs" />
+    <Compile Include="Migrations\201802261413133_QuizBrandingAndStyle_ColNameChange.Designer.cs">
+      <DependentUpon>201802261413133_QuizBrandingAndStyle_ColNameChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802271140309_Quiz_RelatedTables.cs" />
+    <Compile Include="Migrations\201802271140309_Quiz_RelatedTables.Designer.cs">
+      <DependentUpon>201802271140309_Quiz_RelatedTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803050841291_Quiz_CoverImageColumns.cs" />
+    <Compile Include="Migrations\201803050841291_Quiz_CoverImageColumns.Designer.cs">
+      <DependentUpon>201803050841291_Quiz_CoverImageColumns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803070918161_Quiz_JAS_103.cs" />
+    <Compile Include="Migrations\201803070918161_Quiz_JAS_103.Designer.cs">
+      <DependentUpon>201803070918161_Quiz_JAS_103.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803071117430_Quiz_JAS_103_StatusForQuesAns.cs" />
+    <Compile Include="Migrations\201803071117430_Quiz_JAS_103_StatusForQuesAns.Designer.cs">
+      <DependentUpon>201803071117430_Quiz_JAS_103_StatusForQuesAns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803090652383_Quiz_JAS_104_ResultSetting.cs" />
+    <Compile Include="Migrations\201803090652383_Quiz_JAS_104_ResultSetting.Designer.cs">
+      <DependentUpon>201803090652383_Quiz_JAS_104_ResultSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803090727388_Quiz_JAS_104_ResultNotificationTemplate.cs" />
+    <Compile Include="Migrations\201803090727388_Quiz_JAS_104_ResultNotificationTemplate.Designer.cs">
+      <DependentUpon>201803090727388_Quiz_JAS_104_ResultNotificationTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803131448133_QuizBranchingLogicTableChanges_JAS_99.cs" />
+    <Compile Include="Migrations\201803131448133_QuizBranchingLogicTableChanges_JAS_99.Designer.cs">
+      <DependentUpon>201803131448133_QuizBranchingLogicTableChanges_JAS_99.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803131449426_QuizTablePluralizeRemove.cs" />
+    <Compile Include="Migrations\201803131449426_QuizTablePluralizeRemove.Designer.cs">
+      <DependentUpon>201803131449426_QuizTablePluralizeRemove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803150819007_BranchingLogTableUpdate.cs" />
+    <Compile Include="Migrations\201803150819007_BranchingLogTableUpdate.Designer.cs">
+      <DependentUpon>201803150819007_BranchingLogTableUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803151319167_BranchingLogicTableUpdate2.cs" />
+    <Compile Include="Migrations\201803151319167_BranchingLogicTableUpdate2.Designer.cs">
+      <DependentUpon>201803151319167_BranchingLogicTableUpdate2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803151416517_NotificationTemplateUpdateForPublish.cs" />
+    <Compile Include="Migrations\201803151416517_NotificationTemplateUpdateForPublish.Designer.cs">
+      <DependentUpon>201803151416517_NotificationTemplateUpdateForPublish.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803161249449_QuizDetailsStatusColAdded.cs" />
+    <Compile Include="Migrations\201803161249449_QuizDetailsStatusColAdded.Designer.cs">
+      <DependentUpon>201803161249449_QuizDetailsStatusColAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803161250443_QuizDetailsStatusColUpdated.cs" />
+    <Compile Include="Migrations\201803161250443_QuizDetailsStatusColUpdated.Designer.cs">
+      <DependentUpon>201803161250443_QuizDetailsStatusColUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803200613582_QuizStats_JAS_124.cs" />
+    <Compile Include="Migrations\201803200613582_QuizStats_JAS_124.Designer.cs">
+      <DependentUpon>201803200613582_QuizStats_JAS_124.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803210939331_Quiz_Version_RelatedChange.cs" />
+    <Compile Include="Migrations\201803210939331_Quiz_Version_RelatedChange.Designer.cs">
+      <DependentUpon>201803210939331_Quiz_Version_RelatedChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803211321512_QuizDetails_QuizAttempts_mapping.cs" />
+    <Compile Include="Migrations\201803211321512_QuizDetails_QuizAttempts_mapping.Designer.cs">
+      <DependentUpon>201803211321512_QuizDetails_QuizAttempts_mapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803230624318_QuizRedirectResult.cs" />
+    <Compile Include="Migrations\201803230624318_QuizRedirectResult.Designer.cs">
+      <DependentUpon>201803230624318_QuizRedirectResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803271332122_TagColorInQuiz.cs" />
+    <Compile Include="Migrations\201803271332122_TagColorInQuiz.Designer.cs">
+      <DependentUpon>201803271332122_TagColorInQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803300728585_Quiz_viewed.cs" />
+    <Compile Include="Migrations\201803300728585_Quiz_viewed.Designer.cs">
+      <DependentUpon>201803300728585_Quiz_viewed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804021421456_ReminderSetting_OfficeId.cs" />
+    <Compile Include="Migrations\201804021421456_ReminderSetting_OfficeId.Designer.cs">
+      <DependentUpon>201804021421456_ReminderSetting_OfficeId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804031203421_WorkPackage_JAS_198.cs" />
+    <Compile Include="Migrations\201804031203421_WorkPackage_JAS_198.Designer.cs">
+      <DependentUpon>201804031203421_WorkPackage_JAS_198.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804040928399_QuizStats_JAS_97.cs" />
+    <Compile Include="Migrations\201804040928399_QuizStats_JAS_97.Designer.cs">
+      <DependentUpon>201804040928399_QuizStats_JAS_97.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804101420524_QuizPreview_JAS_124.cs" />
+    <Compile Include="Migrations\201804101420524_QuizPreview_JAS_124.Designer.cs">
+      <DependentUpon>201804101420524_QuizPreview_JAS_124.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804110902393_QuizAttempt_JAS_124.cs" />
+    <Compile Include="Migrations\201804110902393_QuizAttempt_JAS_124.Designer.cs">
+      <DependentUpon>201804110902393_QuizAttempt_JAS_124.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161221172_QuizReporting_JAS_189.cs" />
+    <Compile Include="Migrations\201804161221172_QuizReporting_JAS_189.Designer.cs">
+      <DependentUpon>201804161221172_QuizReporting_JAS_189.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804270614456_ReminderQueues_JAS_174.cs" />
+    <Compile Include="Migrations\201804270614456_ReminderQueues_JAS_174.Designer.cs">
+      <DependentUpon>201804270614456_ReminderQueues_JAS_174.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805071118222_QuizStartSetting_JAS174.cs" />
+    <Compile Include="Migrations\201805071118222_QuizStartSetting_JAS174.Designer.cs">
+      <DependentUpon>201805071118222_QuizStartSetting_JAS174.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806221232578_ActionsInQuiz.cs" />
+    <Compile Include="Migrations\201806221232578_ActionsInQuiz.Designer.cs">
+      <DependentUpon>201806221232578_ActionsInQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806260638352_ContentsInQuiz.cs" />
+    <Compile Include="Migrations\201806260638352_ContentsInQuiz.Designer.cs">
+      <DependentUpon>201806260638352_ContentsInQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806260907333_ActionsInQuiz_IsAppointment.cs" />
+    <Compile Include="Migrations\201806260907333_ActionsInQuiz_IsAppointment.Designer.cs">
+      <DependentUpon>201806260907333_ActionsInQuiz_IsAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806261014213_ActionsInQuiz _ActionType.cs" />
+    <Compile Include="Migrations\201806261014213_ActionsInQuiz _ActionType.Designer.cs">
+      <DependentUpon>201806261014213_ActionsInQuiz _ActionType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807091049322_ResultBranchingLogic.cs" />
+    <Compile Include="Migrations\201807091049322_ResultBranchingLogic.Designer.cs">
+      <DependentUpon>201807091049322_ResultBranchingLogic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807121052406_BranchingLogic&amp;CoordinatesInBranchingLogic.cs" />
+    <Compile Include="Migrations\201807121052406_BranchingLogic&amp;CoordinatesInBranchingLogic.Designer.cs">
+      <DependentUpon>201807121052406_BranchingLogic&amp;CoordinatesInBranchingLogic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807200656258_AttachmentsInQuiz.cs" />
+    <Compile Include="Migrations\201807200656258_AttachmentsInQuiz.Designer.cs">
+      <DependentUpon>201807200656258_AttachmentsInQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807201032390_UserPermissionsInQuiz.cs" />
+    <Compile Include="Migrations\201807201032390_UserPermissionsInQuiz.Designer.cs">
+      <DependentUpon>201807201032390_UserPermissionsInQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807230901408_BadgesInQuiz.cs" />
+    <Compile Include="Migrations\201807230901408_BadgesInQuiz.Designer.cs">
+      <DependentUpon>201807230901408_BadgesInQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807240513513_brachinglogic_QuizId.cs" />
+    <Compile Include="Migrations\201807240513513_brachinglogic_QuizId.Designer.cs">
+      <DependentUpon>201807240513513_brachinglogic_QuizId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807240642427_QuizAttempts_RecruiterUserId.cs" />
+    <Compile Include="Migrations\201807240642427_QuizAttempts_RecruiterUserId.Designer.cs">
+      <DependentUpon>201807240642427_QuizAttempts_RecruiterUserId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807250504524_company.cs" />
+    <Compile Include="Migrations\201807250504524_company.Designer.cs">
+      <DependentUpon>201807250504524_company.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808010910475_QuizBadgeStats.cs" />
+    <Compile Include="Migrations\201808010910475_QuizBadgeStats.Designer.cs">
+      <DependentUpon>201808010910475_QuizBadgeStats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808130540421_QuizObjectStats.cs" />
+    <Compile Include="Migrations\201808130540421_QuizObjectStats.Designer.cs">
+      <DependentUpon>201808130540421_QuizObjectStats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810110521449_Quiz_OfficeType.cs" />
+    <Compile Include="Migrations\201810110521449_Quiz_OfficeType.Designer.cs">
+      <DependentUpon>201810110521449_Quiz_OfficeType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810111219485_AddPublicId_ForImage.cs" />
+    <Compile Include="Migrations\201810111219485_AddPublicId_ForImage.Designer.cs">
+      <DependentUpon>201810111219485_AddPublicId_ForImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810120558595_PublicId_InAttachmentsInQuiz.cs" />
+    <Compile Include="Migrations\201810120558595_PublicId_InAttachmentsInQuiz.Designer.cs">
+      <DependentUpon>201810120558595_PublicId_InAttachmentsInQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810131225173_Company_addTertiaryColorAndCompanyId.cs" />
+    <Compile Include="Migrations\201810131225173_Company_addTertiaryColorAndCompanyId.Designer.cs">
+      <DependentUpon>201810131225173_Company_addTertiaryColorAndCompanyId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810300557549_Answer_TagsAndCategory.cs" />
+    <Compile Include="Migrations\201810300557549_Answer_TagsAndCategory.Designer.cs">
+      <DependentUpon>201810300557549_Answer_TagsAndCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810310744225_Answer_TagName.cs" />
+    <Compile Include="Migrations\201810310744225_Answer_TagName.Designer.cs">
+      <DependentUpon>201810310744225_Answer_TagName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811200604072_WorkPackageInfo_Type_CampaignId.cs" />
+    <Compile Include="Migrations\201811200604072_WorkPackageInfo_Type_CampaignId.Designer.cs">
+      <DependentUpon>201811200604072_WorkPackageInfo_Type_CampaignId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811270458029_MinMaxResultInResult.cs" />
+    <Compile Include="Migrations\201811270458029_MinMaxResultInResult.Designer.cs">
+      <DependentUpon>201811270458029_MinMaxResultInResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812030756521_Quiz_ScriptMinMaxValueUpdate.cs" />
+    <Compile Include="Migrations\201812030756521_Quiz_ScriptMinMaxValueUpdate.Designer.cs">
+      <DependentUpon>201812030756521_Quiz_ScriptMinMaxValueUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812040545203_Quiz_VariableLinking.cs" />
+    <Compile Include="Migrations\201812040545203_Quiz_VariableLinking.Designer.cs">
+      <DependentUpon>201812040545203_Quiz_VariableLinking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812100959109_Quiz_ChangeLeadDataInAction.cs" />
+    <Compile Include="Migrations\201812100959109_Quiz_ChangeLeadDataInAction.Designer.cs">
+      <DependentUpon>201812100959109_Quiz_ChangeLeadDataInAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812141305549_QuizComponentLogs.cs" />
+    <Compile Include="Migrations\201812141305549_QuizComponentLogs.Designer.cs">
+      <DependentUpon>201812141305549_QuizComponentLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812260745357_Quiz_addQuizCoverTitle.cs" />
+    <Compile Include="Migrations\201812260745357_Quiz_addQuizCoverTitle.Designer.cs">
+      <DependentUpon>201812260745357_Quiz_addQuizCoverTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901021251431_VariableInQuiz_QuizDetailId.cs" />
+    <Compile Include="Migrations\201901021251431_VariableInQuiz_QuizDetailId.Designer.cs">
+      <DependentUpon>201901021251431_VariableInQuiz_QuizDetailId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901031302567_WorkPackageInfoInQuizAttempt.cs" />
+    <Compile Include="Migrations\201901031302567_WorkPackageInfoInQuizAttempt.Designer.cs">
+      <DependentUpon>201901031302567_WorkPackageInfoInQuizAttempt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901080642380_ReminderSetting_CompanyId.cs" />
+    <Compile Include="Migrations\201901080642380_ReminderSetting_CompanyId.Designer.cs">
+      <DependentUpon>201901080642380_ReminderSetting_CompanyId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901091355002_ReminderQueues_WorkPackageInfoId.cs" />
+    <Compile Include="Migrations\201901091355002_ReminderQueues_WorkPackageInfoId.Designer.cs">
+      <DependentUpon>201901091355002_ReminderQueues_WorkPackageInfoId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901100601053_TagsInAnswer.cs" />
+    <Compile Include="Migrations\201901100601053_TagsInAnswer.Designer.cs">
+      <DependentUpon>201901100601053_TagsInAnswer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901101151432_Quiz_AnswerTypeAndRevealResult.cs" />
+    <Compile Include="Migrations\201901101151432_Quiz_AnswerTypeAndRevealResult.Designer.cs">
+      <DependentUpon>201901101151432_Quiz_AnswerTypeAndRevealResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901171008211_Add_column_In_Question_In_Quiz_table.cs" />
+    <Compile Include="Migrations\201901171008211_Add_column_In_Question_In_Quiz_table.Designer.cs">
+      <DependentUpon>201901171008211_Add_column_In_Question_In_Quiz_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902140623355_QuizTemplatesAndCategory.cs" />
+    <Compile Include="Migrations\201902140623355_QuizTemplatesAndCategory.Designer.cs">
+      <DependentUpon>201902140623355_QuizTemplatesAndCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902190718395_PersonalityQuiz.cs" />
+    <Compile Include="Migrations\201902190718395_PersonalityQuiz.Designer.cs">
+      <DependentUpon>201902190718395_PersonalityQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903081043383_PendingApiQueue.cs" />
+    <Compile Include="Migrations\201903081043383_PendingApiQueue.Designer.cs">
+      <DependentUpon>201903081043383_PendingApiQueue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903110609229_JobRockAcademyAndTempaltePermission.cs" />
+    <Compile Include="Migrations\201903110609229_JobRockAcademyAndTempaltePermission.Designer.cs">
+      <DependentUpon>201903110609229_JobRockAcademyAndTempaltePermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903111211598_BrandingAndStyle.cs" />
+    <Compile Include="Migrations\201903111211598_BrandingAndStyle.Designer.cs">
+      <DependentUpon>201903111211598_BrandingAndStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904091259178_Company_BadgesEnabled.cs" />
+    <Compile Include="Migrations\201904091259178_Company_BadgesEnabled.Designer.cs">
+      <DependentUpon>201904091259178_Company_BadgesEnabled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905081113103_User_GlobalOfficeAdmin.cs" />
+    <Compile Include="Migrations\201905081113103_User_GlobalOfficeAdmin.Designer.cs">
+      <DependentUpon>201905081113103_User_GlobalOfficeAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908071300287_LeadUserId_TypeInttoString.cs" />
+    <Compile Include="Migrations\201908071300287_LeadUserId_TypeInttoString.Designer.cs">
+      <DependentUpon>201908071300287_LeadUserId_TypeInttoString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905221117229_WorkPackageInfo_ShotenUrlCode.cs" />
+    <Compile Include="Migrations\201905221117229_WorkPackageInfo_ShotenUrlCode.Designer.cs">
+      <DependentUpon>201905221117229_WorkPackageInfo_ShotenUrlCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905270519095_PredefinedAnswers.cs" />
+    <Compile Include="Migrations\201905270519095_PredefinedAnswers.Designer.cs">
+      <DependentUpon>201905270519095_PredefinedAnswers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907310729225_Quiz_MultipleTags.cs" />
+    <Compile Include="Migrations\201907310729225_Quiz_MultipleTags.Designer.cs">
+      <DependentUpon>201907310729225_Quiz_MultipleTags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908021128212_Result_ShowLeadUserForm.cs" />
+    <Compile Include="Migrations\201908021128212_Result_ShowLeadUserForm.Designer.cs">
+      <DependentUpon>201908021128212_Result_ShowLeadUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908190644013_TemplateAttachment.cs" />
+    <Compile Include="Migrations\201908190644013_TemplateAttachment.Designer.cs">
+      <DependentUpon>201908190644013_TemplateAttachment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909261031269_PersonalityResultSetting_ShowLeadUserForm.cs" />
+    <Compile Include="Migrations\201909261031269_PersonalityResultSetting_ShowLeadUserForm.Designer.cs">
+      <DependentUpon>201909261031269_PersonalityResultSetting_ShowLeadUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909280707420_Quiz_TechnicalRecruiter.cs" />
+    <Compile Include="Migrations\201909280707420_Quiz_TechnicalRecruiter.Designer.cs">
+      <DependentUpon>201909280707420_Quiz_TechnicalRecruiter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910171129272_BrandingAndStyle_ApplyToAll.cs" />
+    <Compile Include="Migrations\201910171129272_BrandingAndStyle_ApplyToAll.Designer.cs">
+      <DependentUpon>201910171129272_BrandingAndStyle_ApplyToAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911130805086_Quiz_PreviousButtonFeature.cs" />
+    <Compile Include="Migrations\201911130805086_Quiz_PreviousButtonFeature.Designer.cs">
+      <DependentUpon>201911130805086_Quiz_PreviousButtonFeature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911201111144_NotificationTemplate_EmailLinkVariable.cs" />
+    <Compile Include="Migrations\201911201111144_NotificationTemplate_EmailLinkVariable.Designer.cs">
+      <DependentUpon>201911201111144_NotificationTemplate_EmailLinkVariable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912130610371_Quiz_CalendarDataInAction.cs" />
+    <Compile Include="Migrations\201912130610371_Quiz_CalendarDataInAction.Designer.cs">
+      <DependentUpon>201912130610371_Quiz_CalendarDataInAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912240751386_Quiz_AddAutomationAction.cs" />
+    <Compile Include="Migrations\201912240751386_Quiz_AddAutomationAction.Designer.cs">
+      <DependentUpon>201912240751386_Quiz_AddAutomationAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912260736468_QuizBrandingAndStyle_BackColorAndImage.cs" />
+    <Compile Include="Migrations\201912260736468_QuizBrandingAndStyle_BackColorAndImage.Designer.cs">
+      <DependentUpon>201912260736468_QuizBrandingAndStyle_BackColorAndImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912301314321_Quiz_TimerSettings.cs" />
+    <Compile Include="Migrations\201912301314321_Quiz_TimerSettings.Designer.cs">
+      <DependentUpon>201912301314321_Quiz_TimerSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001030611068_Answer_UnansweredType.cs" />
+    <Compile Include="Migrations\202001030611068_Answer_UnansweredType.Designer.cs">
+      <DependentUpon>202001030611068_Answer_UnansweredType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001171040225_Quiz_AddVideoControl.cs" />
+    <Compile Include="Migrations\202001171040225_Quiz_AddVideoControl.Designer.cs">
+      <DependentUpon>202001171040225_Quiz_AddVideoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003201106501_Template_Title.cs" />
+    <Compile Include="Migrations\202003201106501_Template_Title.Designer.cs">
+      <DependentUpon>202003201106501_Template_Title.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003270940229_Quiz_FavoriteStatus.cs" />
+    <Compile Include="Migrations\202003270940229_Quiz_FavoriteStatus.Designer.cs">
+      <DependentUpon>202003270940229_Quiz_FavoriteStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003271253277_Quiz_FavoriteQuizByUser.cs" />
+    <Compile Include="Migrations\202003271253277_Quiz_FavoriteQuizByUser.Designer.cs">
+      <DependentUpon>202003271253277_Quiz_FavoriteQuizByUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004070940018_LinkedDataInAction_IsUpdated.cs" />
+    <Compile Include="Migrations\202004070940018_LinkedDataInAction_IsUpdated.Designer.cs">
+      <DependentUpon>202004070940018_LinkedDataInAction_IsUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004140644489_QuizBrandingAndStyle_AnswerColor.cs" />
+    <Compile Include="Migrations\202004140644489_QuizBrandingAndStyle_AnswerColor.Designer.cs">
+      <DependentUpon>202004140644489_QuizBrandingAndStyle_AnswerColor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004161228298_Add_CreateStandardAutomationPermission.cs" />
+    <Compile Include="Migrations\202004161228298_Add_CreateStandardAutomationPermission.Designer.cs">
+      <DependentUpon>202004161228298_Add_CreateStandardAutomationPermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004230941314_QuizBrandingAndStyle_LogoUrl.cs" />
+    <Compile Include="Migrations\202004230941314_QuizBrandingAndStyle_LogoUrl.Designer.cs">
+      <DependentUpon>202004230941314_QuizBrandingAndStyle_LogoUrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004240554426_QuizResult_InternalTitle.cs" />
+    <Compile Include="Migrations\202004240554426_QuizResult_InternalTitle.Designer.cs">
+      <DependentUpon>202004240554426_QuizResult_InternalTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004300920372_Quiz_Language.cs" />
+    <Compile Include="Migrations\202004300920372_Quiz_Language.Designer.cs">
+      <DependentUpon>202004300920372_Quiz_Language.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006040950495_MediaFileFeature.cs" />
+    <Compile Include="Migrations\202006040950495_MediaFileFeature.Designer.cs">
+      <DependentUpon>202006040950495_MediaFileFeature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006120514023_PushWorkPackage_ConfigurationDetails.cs" />
+    <Compile Include="Migrations\202006120514023_PushWorkPackage_ConfigurationDetails.Designer.cs">
+      <DependentUpon>202006120514023_PushWorkPackage_ConfigurationDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006170957422_ConfigurationDetails_Notification.cs" />
+    <Compile Include="Migrations\202006170957422_ConfigurationDetails_Notification.Designer.cs">
+      <DependentUpon>202006170957422_ConfigurationDetails_Notification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006191324001_MediaVariablesDetails.cs" />
+    <Compile Include="Migrations\202006191324001_MediaVariablesDetails.Designer.cs">
+      <DependentUpon>202006191324001_MediaVariablesDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006241227515_MediaVariable_PublicId.cs" />
+    <Compile Include="Migrations\202006241227515_MediaVariable_PublicId.Designer.cs">
+      <DependentUpon>202006241227515_MediaVariable_PublicId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006300714109_BadgesandAnswer_AutoPlay.cs" />
+    <Compile Include="Migrations\202006300714109_BadgesandAnswer_AutoPlay.Designer.cs">
+      <DependentUpon>202006300714109_BadgesandAnswer_AutoPlay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007100814552_UnknownLead_Configuration.cs" />
+    <Compile Include="Migrations\202007100814552_UnknownLead_Configuration.Designer.cs">
+      <DependentUpon>202007100814552_UnknownLead_Configuration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007151052406_ConfigurationDetails_SourceName.cs" />
+    <Compile Include="Migrations\202007151052406_ConfigurationDetails_SourceName.Designer.cs">
+      <DependentUpon>202007151052406_ConfigurationDetails_SourceName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007171052311_NotificationTemplate_CompanyId.cs" />
+    <Compile Include="Migrations\202007171052311_NotificationTemplate_CompanyId.Designer.cs">
+      <DependentUpon>202007171052311_NotificationTemplate_CompanyId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007280610560_Configuration_Attachments.cs" />
+    <Compile Include="Migrations\202007280610560_Configuration_Attachments.Designer.cs">
+      <DependentUpon>202007280610560_Configuration_Attachments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007290608489_QuizBrandingAndStyle_LogoPublicId.cs" />
+    <Compile Include="Migrations\202007290608489_QuizBrandingAndStyle_LogoPublicId.Designer.cs">
+      <DependentUpon>202007290608489_QuizBrandingAndStyle_LogoPublicId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008110935224_QuizUrlSetting.cs" />
+    <Compile Include="Migrations\202008110935224_QuizUrlSetting.Designer.cs">
+      <DependentUpon>202008110935224_QuizUrlSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008121005354_GtmSettings.cs" />
+    <Compile Include="Migrations\202008121005354_GtmSettings.Designer.cs">
+      <DependentUpon>202008121005354_GtmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008241256512_ConfigurationId_String.cs" />
+    <Compile Include="Migrations\202008241256512_ConfigurationId_String.Designer.cs">
+      <DependentUpon>202008241256512_ConfigurationId_String.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010011418094_PendingApiQueue_RequestTypeURLandAuthorization.cs" />
+    <Compile Include="Migrations\202010011418094_PendingApiQueue_RequestTypeURLandAuthorization.Designer.cs">
+      <DependentUpon>202010011418094_PendingApiQueue_RequestTypeURLandAuthorization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010151037096_QuizDetails_UsageType.cs" />
+    <Compile Include="Migrations\202010151037096_QuizDetails_UsageType.Designer.cs">
+      <DependentUpon>202010151037096_QuizDetails_UsageType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010161202547_Quiz_UsageTypeInQuiz.cs" />
+    <Compile Include="Migrations\202010161202547_Quiz_UsageTypeInQuiz.Designer.cs">
+      <DependentUpon>202010161202547_Quiz_UsageTypeInQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010260923206_ResolveMigrationError26Oct2020.cs" />
+    <Compile Include="Migrations\202010260923206_ResolveMigrationError26Oct2020.Designer.cs">
+      <DependentUpon>202010260923206_ResolveMigrationError26Oct2020.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011040737551_ConfigurationDetails_WhatsApp.cs" />
+    <Compile Include="Migrations\202011040737551_ConfigurationDetails_WhatsApp.Designer.cs">
+      <DependentUpon>202011040737551_ConfigurationDetails_WhatsApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011041129320_HsmTemplateId_Nullable.cs" />
+    <Compile Include="Migrations\202011041129320_HsmTemplateId_Nullable.Designer.cs">
+      <DependentUpon>202011041129320_HsmTemplateId_Nullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012041003522_WorkPackageInfo_SentOn.cs" />
+    <Compile Include="Migrations\202012041003522_WorkPackageInfo_SentOn.Designer.cs">
+      <DependentUpon>202012041003522_WorkPackageInfo_SentOn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012240908546_Quiz_QuesAndContentInSameTable.cs" />
+    <Compile Include="Migrations\202012240908546_Quiz_QuesAndContentInSameTable.Designer.cs">
+      <DependentUpon>202012240908546_Quiz_QuesAndContentInSameTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012280730587_Badges_ShowImage.cs" />
+    <Compile Include="Migrations\202012280730587_Badges_ShowImage.Designer.cs">
+      <DependentUpon>202012280730587_Badges_ShowImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012281104219_Remove_ResultEmailSMS.cs" />
+    <Compile Include="Migrations\202012281104219_Remove_ResultEmailSMS.Designer.cs">
+      <DependentUpon>202012281104219_Remove_ResultEmailSMS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012290623025_Question_Content_ShowTitle.cs" />
+    <Compile Include="Migrations\202012290623025_Question_Content_ShowTitle.Designer.cs">
+      <DependentUpon>202012290623025_Question_Content_ShowTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012300724401_Quiz_ReorderingElement.cs" />
+    <Compile Include="Migrations\202012300724401_Quiz_ReorderingElement.Designer.cs">
+      <DependentUpon>202012300724401_Quiz_ReorderingElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012301054316_QuesAndContent_ShowDescription.cs" />
+    <Compile Include="Migrations\202012301054316_QuesAndContent_ShowDescription.Designer.cs">
+      <DependentUpon>202012301054316_QuesAndContent_ShowDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101041158299_Dynamic_LeadForm.cs" />
+    <Compile Include="Migrations\202101041158299_Dynamic_LeadForm.Designer.cs">
+      <DependentUpon>202101041158299_Dynamic_LeadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101120711106_Logs_ApiUsageLogs.cs" />
+    <Compile Include="Migrations\202101120711106_Logs_ApiUsageLogs.Designer.cs">
+      <DependentUpon>202101120711106_Logs_ApiUsageLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101200716170_QuestionType_Rating.cs" />
+    <Compile Include="Migrations\202101200716170_QuestionType_Rating.Designer.cs">
+      <DependentUpon>202101200716170_QuestionType_Rating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102101354293_Remove_GtmSettings.cs" />
+    <Compile Include="Migrations\202102101354293_Remove_GtmSettings.Designer.cs">
+      <DependentUpon>202102101354293_Remove_GtmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103311003582_Answer_optionTextforRatingTypeQuestions.cs" />
+    <Compile Include="Migrations\202103311003582_Answer_optionTextforRatingTypeQuestions.Designer.cs">
+      <DependentUpon>202103311003582_Answer_optionTextforRatingTypeQuestions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107020644146_MediaVariablesDetails_MediaOwner.cs" />
+    <Compile Include="Migrations\202107020644146_MediaVariablesDetails_MediaOwner.Designer.cs">
+      <DependentUpon>202107020644146_MediaVariablesDetails_MediaOwner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107080612198_ConfigurationDetails_TemplateControls.cs" />
+    <Compile Include="Migrations\202107080612198_ConfigurationDetails_TemplateControls.Designer.cs">
+      <DependentUpon>202107080612198_ConfigurationDetails_TemplateControls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107211355466_QuizAnswerStats_AnswerSecondaryText.cs" />
+    <Compile Include="Migrations\202107211355466_QuizAnswerStats_AnswerSecondaryText.Designer.cs">
+      <DependentUpon>202107211355466_QuizAnswerStats_AnswerSecondaryText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107281028345_ConfigurationDetails_SendFallbackSms.cs" />
+    <Compile Include="Migrations\202107281028345_ConfigurationDetails_SendFallbackSms.Designer.cs">
+      <DependentUpon>202107281028345_ConfigurationDetails_SendFallbackSms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108161059543_AnswerOptionsInQuizQuestions_ListValues.cs" />
+    <Compile Include="Migrations\202108161059543_AnswerOptionsInQuizQuestions_ListValues.Designer.cs">
+      <DependentUpon>202108161059543_AnswerOptionsInQuizQuestions_ListValues.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110250729577_add-Migration_QuizDetails_SecondsToApply.cs" />
+    <Compile Include="Migrations\202110250729577_add-Migration_QuizDetails_SecondsToApply.designer.cs">
+      <DependentUpon>202110250729577_add-Migration_QuizDetails_SecondsToApply.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111161029455_SecondsToApply.cs" />
+    <Compile Include="Migrations\202111161029455_SecondsToApply.designer.cs">
+      <DependentUpon>202111161029455_SecondsToApply.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111170616305_PrivacyJSON.cs" />
+    <Compile Include="Migrations\202111170616305_PrivacyJSON.designer.cs">
+      <DependentUpon>202111170616305_PrivacyJSON.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112021237386_VideoFrameEnabled.cs" />
+    <Compile Include="Migrations\202112021237386_VideoFrameEnabled.designer.cs">
+      <DependentUpon>202112021237386_VideoFrameEnabled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112021323379_VideoFrameUpdate.cs" />
+    <Compile Include="Migrations\202112021323379_VideoFrameUpdate.designer.cs">
+      <DependentUpon>202112021323379_VideoFrameUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112201454591_companyId.cs" />
+    <Compile Include="Migrations\202112201454591_companyId.designer.cs">
+      <DependentUpon>202112201454591_companyId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112210621542_CompanyIdNull.cs" />
+    <Compile Include="Migrations\202112210621542_CompanyIdNull.designer.cs">
+      <DependentUpon>202112210621542_CompanyIdNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112210820561_QuizIdAnswerOptionInQuiz.cs" />
+    <Compile Include="Migrations\202112210820561_QuizIdAnswerOptionInQuiz.designer.cs">
+      <DependentUpon>202112210820561_QuizIdAnswerOptionInQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112220645263_configurationDetails_HsmTemplateLanguageCode.cs" />
+    <Compile Include="Migrations\202112220645263_configurationDetails_HsmTemplateLanguageCode.designer.cs">
+      <DependentUpon>202112220645263_configurationDetails_HsmTemplateLanguageCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201060612581_AttemptQuizLog.cs" />
+    <Compile Include="Migrations\202201060612581_AttemptQuizLog.designer.cs">
+      <DependentUpon>202201060612581_AttemptQuizLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201060637525_AttemptQuizLog1.cs" />
+    <Compile Include="Migrations\202201060637525_AttemptQuizLog1.designer.cs">
+      <DependentUpon>202201060637525_AttemptQuizLog1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201101249250_AttemptQuizLog_ResponseJson.cs" />
+    <Compile Include="Migrations\202201101249250_AttemptQuizLog_ResponseJson.designer.cs">
+      <DependentUpon>202201101249250_AttemptQuizLog_ResponseJson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201120606249_AnswerStructureType.cs" />
+    <Compile Include="Migrations\202201120606249_AnswerStructureType.designer.cs">
+      <DependentUpon>202201120606249_AnswerStructureType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202091320565_Quiztag_UrlSetting_AnswerStat.cs" />
+    <Compile Include="Migrations\202202091320565_Quiztag_UrlSetting_AnswerStat.designer.cs">
+      <DependentUpon>202202091320565_Quiztag_UrlSetting_AnswerStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202111037546_ExternalActionQueue.cs" />
+    <Compile Include="Migrations\202202111037546_ExternalActionQueue.designer.cs">
+      <DependentUpon>202202111037546_ExternalActionQueue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202241507550_Languages.cs" />
+    <Compile Include="Migrations\202202241507550_Languages.designer.cs">
+      <DependentUpon>202202241507550_Languages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202250901111_AnswerOptionsInQuizQuestions_RefId.cs" />
+    <Compile Include="Migrations\202202250901111_AnswerOptionsInQuizQuestions_RefId.designer.cs">
+      <DependentUpon>202202250901111_AnswerOptionsInQuizQuestions_RefId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202250905588_QuestionsInQuiz_LanguageId_TemplateId.cs" />
+    <Compile Include="Migrations\202202250905588_QuestionsInQuiz_LanguageId_TemplateId.designer.cs">
+      <DependentUpon>202202250905588_QuestionsInQuiz_LanguageId_TemplateId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202281447193_Languages_UpdateIdentityInId.cs" />
+    <Compile Include="Migrations\202202281447193_Languages_UpdateIdentityInId.designer.cs">
+      <DependentUpon>202202281447193_Languages_UpdateIdentityInId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203020741071_NotificationTemplate_WhatsApp.cs" />
+    <Compile Include="Migrations\202203020741071_NotificationTemplate_WhatsApp.designer.cs">
+      <DependentUpon>202203020741071_NotificationTemplate_WhatsApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203081415584_QuestionsInQuiz_LanguageCode.cs" />
+    <Compile Include="Migrations\202203081415584_QuestionsInQuiz_LanguageCode.designer.cs">
+      <DependentUpon>202203081415584_QuestionsInQuiz_LanguageCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203211104171_NotificationTemplatesInQuiz_CompanyId.cs" />
+    <Compile Include="Migrations\202203211104171_NotificationTemplatesInQuiz_CompanyId.designer.cs">
+      <DependentUpon>202203211104171_NotificationTemplatesInQuiz_CompanyId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203221048279_Quiz_IsWhatsAppChatBotOldVersion.cs" />
+    <Compile Include="Migrations\202203221048279_Quiz_IsWhatsAppChatBotOldVersion.designer.cs">
+      <DependentUpon>202203221048279_Quiz_IsWhatsAppChatBotOldVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204041106314_CoordinatesInBranchingLogic_QuizId_CompanyId.cs" />
+    <Compile Include="Migrations\202204041106314_CoordinatesInBranchingLogic_QuizId_CompanyId.designer.cs">
+      <DependentUpon>202204041106314_CoordinatesInBranchingLogic_QuizId_CompanyId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205181054361_QuestionsInQuiz_IsMultiRating.cs" />
+    <Compile Include="Migrations\202205181054361_QuestionsInQuiz_IsMultiRating.designer.cs">
+      <DependentUpon>202205181054361_QuestionsInQuiz_IsMultiRating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205250934270_ConfigurationDetails_MsgVariables.cs" />
+    <Compile Include="Migrations\202205250934270_ConfigurationDetails_MsgVariables.designer.cs">
+      <DependentUpon>202205250934270_ConfigurationDetails_MsgVariables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206011348044_NotificationTemplate_MsgVariables.cs" />
+    <Compile Include="Migrations\202206011348044_NotificationTemplate_MsgVariables.designer.cs">
+      <DependentUpon>202206011348044_NotificationTemplate_MsgVariables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206070848520_QuizVariablesMigration.cs" />
+    <Compile Include="Migrations\202206070848520_QuizVariablesMigration.designer.cs">
+      <DependentUpon>202206070848520_QuizVariablesMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206230715476_IncreaseTitleLenght_QuizDetails_QuizResults.cs" />
+    <Compile Include="Migrations\202206230715476_IncreaseTitleLenght_QuizDetails_QuizResults.designer.cs">
+      <DependentUpon>202206230715476_IncreaseTitleLenght_QuizDetails_QuizResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208031032206_ObjectFieldsInAnswer_IsExternalSync.cs" />
+    <Compile Include="Migrations\202208031032206_ObjectFieldsInAnswer_IsExternalSync.designer.cs">
+      <DependentUpon>202208031032206_ObjectFieldsInAnswer_IsExternalSync.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208041315465_AnswerOptionsInQuizQuestions_Description.cs" />
+    <Compile Include="Migrations\202208041315465_AnswerOptionsInQuizQuestions_Description.designer.cs">
+      <DependentUpon>202208041315465_AnswerOptionsInQuizQuestions_Description.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209070811486_QuizStats_AttemptStatus.cs" />
+    <Compile Include="Migrations\202209070811486_QuizStats_AttemptStatus.designer.cs">
+      <DependentUpon>202209070811486_QuizStats_AttemptStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212140712301_ObjectFieldsInAnswer_IsCommentMapped.cs" />
+    <Compile Include="Migrations\202212140712301_ObjectFieldsInAnswer_IsCommentMapped.designer.cs">
+      <DependentUpon>202212140712301_ObjectFieldsInAnswer_IsCommentMapped.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212151300396_ObjectFieldsInAnswerComment_IsCommentMapped.cs" />
+    <Compile Include="Migrations\202212151300396_ObjectFieldsInAnswerComment_IsCommentMapped.designer.cs">
+      <DependentUpon>202212151300396_ObjectFieldsInAnswerComment_IsCommentMapped.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212291013006_WhatsappLogging.cs" />
+    <Compile Include="Migrations\202212291013006_WhatsappLogging.designer.cs">
+      <DependentUpon>202212291013006_WhatsappLogging.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301110612529_ObjectFieldsInAnswer_QuestionId.cs" />
+    <Compile Include="Migrations\202301110612529_ObjectFieldsInAnswer_QuestionId.designer.cs">
+      <DependentUpon>202301110612529_ObjectFieldsInAnswer_QuestionId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301271043172_FieldSyncSetting.cs" />
+    <Compile Include="Migrations\202301271043172_FieldSyncSetting.designer.cs">
+      <DependentUpon>202301271043172_FieldSyncSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307101151281_QuizBrandingAndStyle_HoverColor.cs" />
+    <Compile Include="Migrations\202307101151281_QuizBrandingAndStyle_HoverColor.designer.cs">
+      <DependentUpon>202307101151281_QuizBrandingAndStyle_HoverColor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307110800168_QuizBrandingAndStyle_ButtonHoverColor.cs" />
+    <Compile Include="Migrations\202307110800168_QuizBrandingAndStyle_ButtonHoverColor.designer.cs">
+      <DependentUpon>202307110800168_QuizBrandingAndStyle_ButtonHoverColor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307171325120_QuizBrandingAndStyle_ButtonHoverTextColor.cs" />
+    <Compile Include="Migrations\202307171325120_QuizBrandingAndStyle_ButtonHoverTextColor.designer.cs">
+      <DependentUpon>202307171325120_QuizBrandingAndStyle_ButtonHoverTextColor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308011329531_QuizAttempts_SourceId.cs" />
+    <Compile Include="Migrations\202308011329531_QuizAttempts_SourceId.designer.cs">
+      <DependentUpon>202308011329531_QuizAttempts_SourceId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309250758133_WorkPackageInfo_RequestId.cs" />
+    <Compile Include="Migrations\202309250758133_WorkPackageInfo_RequestId.designer.cs">
+      <DependentUpon>202309250758133_WorkPackageInfo_RequestId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryExtensions\QuizAnswerStatsRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\PersonalityResultSettingRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\AnswerOptionsInQuizQuestionsRepositoryExension.cs" />
+    <Compile Include="RepositoryExtensions\ActionsInQuizRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\AttachmentsInNotificationTemplateRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\BadgesInQuizRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\BranchingLogicRepositoryeExtension.cs" />
+    <Compile Include="RepositoryExtensions\CompanyRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\AttachmentsInConfigurationRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\ConfigurationDetailsRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\MediaVariablesDetailsRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\QuizBrandingAndStyleRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\QuizComponentLogsRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\QuizDetailsRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\QuizAttemptsRepositoryExtensions.cs" />
+    <Compile Include="RepositoryExtensions\NotificationTemplatesInQuizRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\QuizObjectStatsRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\QuizQuestionStatsRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\QuizVariablesRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\ResultIdsInConfigurationDetailsRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\TemplateParameterInConfigurationDetailsRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\WorkPackageInfoRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\QuizRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\QuizStatsRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\QuizTagDetailsRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\ResultSettingsRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\QuizResultsRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\UsageTypeInQuizRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\ContentInQuizRepositoryExtension.cs" />
+    <Compile Include="RepositoryExtensions\QuestionsInQuizRepositoryExtension.cs" />
+    <Compile Include="RepositoryPattern\GenericRepository.cs" />
+    <Compile Include="RepositoryPattern\IGenericRepository.cs" />
+    <Compile Include="RepositoryPattern\AutomationUnitOfWork.cs" />
+    <Compile Include="RepositoryPattern\UnitOfWork.cs" />
+    <Compile Include="Request\CommunicationRequest.cs" />
+    <Compile Include="Request\ContactRequest.cs" />
+    <Compile Include="Request\CronRequest.cs" />
+    <Compile Include="Request\DuplicateQuizRequest.cs" />
+    <Compile Include="Request\LeadUserRequest.cs" />
+    <Compile Include="Request\NotificationTemplateRequest.cs" />
+    <Compile Include="Request\NotificationTemplateRequestModel.cs" />
+    <Compile Include="Request\OWCRequest.cs" />
+    <Compile Include="Request\QuizListRequest.cs" />
+    <Compile Include="Request\QuizRequest.cs" />
+    <Compile Include="Request\ReminderSettingRequest.cs" />
+    <Compile Include="Request\TemplateTypeRequest.cs" />
+    <Compile Include="Request\WorkPackageRequest.cs" />
+    <Compile Include="Response\FieldSyncSettingResponse.cs" />
+    <Compile Include="Response\QuizAttemptV2Response.cs" />
+    <Compile Include="Response\QuizAttemptResponse.cs" />
+    <Compile Include="Response\BusinessUserResponse.cs" />
+    <Compile Include="Response\CompanyResponse.cs" />
+    <Compile Include="Response\CourseResponse.cs" />
+    <Compile Include="Response\IResponse.cs" />
+    <Compile Include="Response\NotificationTemplateResponse.cs" />
+    <Compile Include="Response\OWCResponse.cs" />
+    <Compile Include="Response\QuizReportResponse.cs" />
+    <Compile Include="Response\QuizResponse.cs" />
+    <Compile Include="Response\ReminderSettingResponse.cs" />
+    <Compile Include="Response\TemplateResponse.cs" />
+    <Compile Include="Response\WhatsTemplateResponse.cs" />
+    <Compile Include="Services\Model\AttemptQuizSetting.cs" />
+    <Compile Include="Services\Model\Base.cs" />
+    <Compile Include="Services\Model\BusinessUser.cs" />
+    <Compile Include="Services\Model\Communication.cs" />
+    <Compile Include="Services\Model\Company.cs" />
+    <Compile Include="Services\Model\AttemptQuizLogLocal.cs" />
+    <Compile Include="Services\Model\Course.cs" />
+    <Compile Include="Services\Model\Cron.cs" />
+    <Compile Include="Services\Model\WhatsappHSMTemplateModel.cs" />
+    <Compile Include="Services\Model\Lead.cs" />
+    <Compile Include="Services\Model\Mappings.cs" />
+    <Compile Include="Services\Model\NotificationTemplate.cs" />
+    <Compile Include="Services\Model\NotificationTemplateType.cs" />
+    <Compile Include="Services\Model\Office.cs" />
+    <Compile Include="Services\Model\PendingApiQueue.cs" />
+    <Compile Include="Services\Model\PublishQuizTmpModel.cs" />
+    <Compile Include="Services\Model\Quiz.cs" />
+    <Compile Include="Services\Model\QuizReport.cs" />
+    <Compile Include="Services\Model\QuizVariable.cs" />
+    <Compile Include="Services\Model\ReminderQueues.cs" />
+    <Compile Include="Services\Model\ReminderSetting.cs" />
+    <Compile Include="Services\Model\ResultQueues.cs" />
+    <Compile Include="Services\Model\Tags.cs" />
+    <Compile Include="Services\Model\Template.cs" />
+    <Compile Include="Services\Model\WorkPackage.cs" />
+    <Compile Include="Services\Service\AutomationDetailsService.cs" />
+    <Compile Include="Services\Service\CommunicationService.cs" />
+    <Compile Include="Services\Service\ConfigurationDetailsLogService.cs" />
+    <Compile Include="Services\Service\ApiUsageLogsService.cs" />
+    <Compile Include="Services\Service\AttemptQuizBadgeService.cs" />
+    <Compile Include="Services\Service\AttemptQuizSettingService.cs" />
+    <Compile Include="Services\Service\BranchingLogicService.cs" />
+    <Compile Include="Services\Service\ContactService.cs" />
+    <Compile Include="Services\Service\ExternalActionQueueService.cs" />
+    <Compile Include="Services\Service\FieldSettingService.cs" />
+    <Compile Include="Services\Service\GenericAutomationService.cs" />
+    <Compile Include="Services\Service\BusinessUserService.cs" />
+    <Compile Include="Services\Service\ConfigurationService.cs" />
+    <Compile Include="Services\Service\IApiUsageLogsService.cs" />
+    <Compile Include="Services\Service\IAutomationDetailsService.cs" />
+    <Compile Include="Services\Service\ICommunicationService.cs" />
+    <Compile Include="Services\Service\IConfigurationDetailsLogService.cs" />
+    <Compile Include="Services\Service\IContactService.cs" />
+    <Compile Include="Services\Service\IFieldSettingService.cs" />
+    <Compile Include="Services\Service\IPublishQuizService.cs" />
+    <Compile Include="Services\Service\IQuestionService.cs" />
+    <Compile Include="Services\Service\IQuizCoverService.cs" />
+    <Compile Include="Services\Service\IBranchingLogicService.cs" />
+    <Compile Include="Services\Service\IGenericAutomationService.cs" />
+    <Compile Include="Services\Service\IBusinessUserService.cs" />
+    <Compile Include="Services\Service\CourseService.cs" />
+    <Compile Include="Services\Service\ICourseService.cs" />
+    <Compile Include="Services\Service\INotificationTemplateService.cs" />
+    <Compile Include="Services\Service\IAutomationService.cs" />
+    <Compile Include="Services\Service\IQuizAttemptService.cs" />
+    <Compile Include="Services\Service\IQuizDuplicateService.cs" />
+    <Compile Include="Services\Service\IQuizListService.cs" />
+    <Compile Include="Services\Service\IQuizService.cs" />
+    <Compile Include="Services\Service\IQuizVariablesService.cs" />
+    <Compile Include="Services\Service\IReminderSettingService.cs" />
+    <Compile Include="Services\Service\IReportingService.cs" />
+    <Compile Include="Services\Service\ITemplateService.cs" />
+    <Compile Include="Services\Service\IUncompleteQuizService.cs" />
+    <Compile Include="Services\Service\IUpdateBrandingService.cs" />
+    <Compile Include="Services\Service\IWhatsAppService.cs" />
+    <Compile Include="Services\Service\IWorkPackageService.cs" />
+    <Compile Include="Services\Service\NotificationTemplateService.cs" />
+    <Compile Include="Services\Service\AutomationService.cs" />
+    <Compile Include="Services\Service\QuestionService.cs" />
+    <Compile Include="Services\Service\QuizAttemptLogService.cs" />
+    <Compile Include="Services\Service\QuizCoverService.cs" />
+    <Compile Include="Services\Service\QuizAttemptService.cs" />
+    <Compile Include="Services\Service\QuizAttemptServiceBase.cs" />
+    <Compile Include="Services\Service\QuizDuplicateService.cs" />
+    <Compile Include="Services\Service\QuizListService.cs" />
+    <Compile Include="Services\Service\QuizService.cs" />
+    <Compile Include="Services\Service\PublishQuizService.cs" />
+    <Compile Include="Services\Service\AttemptQuizLog.cs" />
+    <Compile Include="Services\Service\QuizVariablesService.cs" />
+    <Compile Include="Services\Service\ReminderSettingService.cs" />
+    <Compile Include="Services\Service\ReportingService.cs" />
+    <Compile Include="Services\Service\TemplateService.cs" />
+    <Compile Include="Services\Service\UncompleteQuizService.cs" />
+    <Compile Include="Services\Service\UpdateBrandingService.cs" />
+    <Compile Include="Services\Service\WhatsAppService.cs" />
+    <Compile Include="Services\Service\WorkpackageCommunicationService.cs" />
+    <Compile Include="Services\Service\WorkPackageService.cs" />
+    <Compile Include="Services\tempClass1.cs" />
+    <Compile Include="Services\tmpclass2.cs" />
+    <Compile Include="Services\Validator\QuizValidator.cs" />
+    <Compile Include="Services\Validator\WorkPackageValidator.cs" />
+    <Compile Include="Tests\CommunicationHelperTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\PublishProfiles\de.pubxml" />
+    <None Include="Properties\PublishProfiles\publish.pubxml" />
+    <None Include="Properties\PublishProfiles\quiz.pubxml" />
+    <None Include="Properties\PublishProfiles\QuizApp.API.pubxml" />
+    <Content Include="Properties\webjobs-list.json" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Views\QuizVariables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802211418513_initial.resx">
+      <DependentUpon>201802211418513_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802220832158_UserToken.resx">
+      <DependentUpon>201802220832158_UserToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802261413133_QuizBrandingAndStyle_ColNameChange.resx">
+      <DependentUpon>201802261413133_QuizBrandingAndStyle_ColNameChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802271140309_Quiz_RelatedTables.resx">
+      <DependentUpon>201802271140309_Quiz_RelatedTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803050841291_Quiz_CoverImageColumns.resx">
+      <DependentUpon>201803050841291_Quiz_CoverImageColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803070918161_Quiz_JAS_103.resx">
+      <DependentUpon>201803070918161_Quiz_JAS_103.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803071117430_Quiz_JAS_103_StatusForQuesAns.resx">
+      <DependentUpon>201803071117430_Quiz_JAS_103_StatusForQuesAns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803090652383_Quiz_JAS_104_ResultSetting.resx">
+      <DependentUpon>201803090652383_Quiz_JAS_104_ResultSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803090727388_Quiz_JAS_104_ResultNotificationTemplate.resx">
+      <DependentUpon>201803090727388_Quiz_JAS_104_ResultNotificationTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803131448133_QuizBranchingLogicTableChanges_JAS_99.resx">
+      <DependentUpon>201803131448133_QuizBranchingLogicTableChanges_JAS_99.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803131449426_QuizTablePluralizeRemove.resx">
+      <DependentUpon>201803131449426_QuizTablePluralizeRemove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803150819007_BranchingLogTableUpdate.resx">
+      <DependentUpon>201803150819007_BranchingLogTableUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803151319167_BranchingLogicTableUpdate2.resx">
+      <DependentUpon>201803151319167_BranchingLogicTableUpdate2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803151416517_NotificationTemplateUpdateForPublish.resx">
+      <DependentUpon>201803151416517_NotificationTemplateUpdateForPublish.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803161249449_QuizDetailsStatusColAdded.resx">
+      <DependentUpon>201803161249449_QuizDetailsStatusColAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803161250443_QuizDetailsStatusColUpdated.resx">
+      <DependentUpon>201803161250443_QuizDetailsStatusColUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803200613582_QuizStats_JAS_124.resx">
+      <DependentUpon>201803200613582_QuizStats_JAS_124.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803210939331_Quiz_Version_RelatedChange.resx">
+      <DependentUpon>201803210939331_Quiz_Version_RelatedChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803211321512_QuizDetails_QuizAttempts_mapping.resx">
+      <DependentUpon>201803211321512_QuizDetails_QuizAttempts_mapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803230624318_QuizRedirectResult.resx">
+      <DependentUpon>201803230624318_QuizRedirectResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803271332122_TagColorInQuiz.resx">
+      <DependentUpon>201803271332122_TagColorInQuiz.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803300728585_Quiz_viewed.resx">
+      <DependentUpon>201803300728585_Quiz_viewed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804021421456_ReminderSetting_OfficeId.resx">
+      <DependentUpon>201804021421456_ReminderSetting_OfficeId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804031203421_WorkPackage_JAS_198.resx">
+      <DependentUpon>201804031203421_WorkPackage_JAS_198.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804040928399_QuizStats_JAS_97.resx">
+      <DependentUpon>201804040928399_QuizStats_JAS_97.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804101420524_QuizPreview_JAS_124.resx">
+      <DependentUpon>201804101420524_QuizPreview_JAS_124.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804110902393_QuizAttempt_JAS_124.resx">
+      <DependentUpon>201804110902393_QuizAttempt_JAS_124.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161221172_QuizReporting_JAS_189.resx">
+      <DependentUpon>201804161221172_QuizReporting_JAS_189.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804270614456_ReminderQueues_JAS_174.resx">
+      <DependentUpon>201804270614456_ReminderQueues_JAS_174.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805071118222_QuizStartSetting_JAS174.resx">
+      <DependentUpon>201805071118222_QuizStartSetting_JAS174.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806221232578_ActionsInQuiz.resx">
+      <DependentUpon>201806221232578_ActionsInQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806260638352_ContentsInQuiz.resx">
+      <DependentUpon>201806260638352_ContentsInQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806260907333_ActionsInQuiz_IsAppointment.resx">
+      <DependentUpon>201806260907333_ActionsInQuiz_IsAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806261014213_ActionsInQuiz _ActionType.resx">
+      <DependentUpon>201806261014213_ActionsInQuiz _ActionType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807091049322_ResultBranchingLogic.resx">
+      <DependentUpon>201807091049322_ResultBranchingLogic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807121052406_BranchingLogic&amp;CoordinatesInBranchingLogic.resx">
+      <DependentUpon>201807121052406_BranchingLogic&amp;CoordinatesInBranchingLogic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807200656258_AttachmentsInQuiz.resx">
+      <DependentUpon>201807200656258_AttachmentsInQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807201032390_UserPermissionsInQuiz.resx">
+      <DependentUpon>201807201032390_UserPermissionsInQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807230901408_BadgesInQuiz.resx">
+      <DependentUpon>201807230901408_BadgesInQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807240513513_brachinglogic_QuizId.resx">
+      <DependentUpon>201807240513513_brachinglogic_QuizId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807240642427_QuizAttempts_RecruiterUserId.resx">
+      <DependentUpon>201807240642427_QuizAttempts_RecruiterUserId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807250504524_company.resx">
+      <DependentUpon>201807250504524_company.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808010910475_QuizBadgeStats.resx">
+      <DependentUpon>201808010910475_QuizBadgeStats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808130540421_QuizObjectStats.resx">
+      <DependentUpon>201808130540421_QuizObjectStats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810110521449_Quiz_OfficeType.resx">
+      <DependentUpon>201810110521449_Quiz_OfficeType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810111219485_AddPublicId_ForImage.resx">
+      <DependentUpon>201810111219485_AddPublicId_ForImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810120558595_PublicId_InAttachmentsInQuiz.resx">
+      <DependentUpon>201810120558595_PublicId_InAttachmentsInQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810131225173_Company_addTertiaryColorAndCompanyId.resx">
+      <DependentUpon>201810131225173_Company_addTertiaryColorAndCompanyId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810300557549_Answer_TagsAndCategory.resx">
+      <DependentUpon>201810300557549_Answer_TagsAndCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810310744225_Answer_TagName.resx">
+      <DependentUpon>201810310744225_Answer_TagName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811200604072_WorkPackageInfo_Type_CampaignId.resx">
+      <DependentUpon>201811200604072_WorkPackageInfo_Type_CampaignId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811270458029_MinMaxResultInResult.resx">
+      <DependentUpon>201811270458029_MinMaxResultInResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812030756521_Quiz_ScriptMinMaxValueUpdate.resx">
+      <DependentUpon>201812030756521_Quiz_ScriptMinMaxValueUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812040545203_Quiz_VariableLinking.resx">
+      <DependentUpon>201812040545203_Quiz_VariableLinking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812100959109_Quiz_ChangeLeadDataInAction.resx">
+      <DependentUpon>201812100959109_Quiz_ChangeLeadDataInAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812141305549_QuizComponentLogs.resx">
+      <DependentUpon>201812141305549_QuizComponentLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812260745357_Quiz_addQuizCoverTitle.resx">
+      <DependentUpon>201812260745357_Quiz_addQuizCoverTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901021251431_VariableInQuiz_QuizDetailId.resx">
+      <DependentUpon>201901021251431_VariableInQuiz_QuizDetailId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901031302567_WorkPackageInfoInQuizAttempt.resx">
+      <DependentUpon>201901031302567_WorkPackageInfoInQuizAttempt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901080642380_ReminderSetting_CompanyId.resx">
+      <DependentUpon>201901080642380_ReminderSetting_CompanyId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901091355002_ReminderQueues_WorkPackageInfoId.resx">
+      <DependentUpon>201901091355002_ReminderQueues_WorkPackageInfoId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901100601053_TagsInAnswer.resx">
+      <DependentUpon>201901100601053_TagsInAnswer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901101151432_Quiz_AnswerTypeAndRevealResult.resx">
+      <DependentUpon>201901101151432_Quiz_AnswerTypeAndRevealResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901171008211_Add_column_In_Question_In_Quiz_table.resx">
+      <DependentUpon>201901171008211_Add_column_In_Question_In_Quiz_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902140623355_QuizTemplatesAndCategory.resx">
+      <DependentUpon>201902140623355_QuizTemplatesAndCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902190718395_PersonalityQuiz.resx">
+      <DependentUpon>201902190718395_PersonalityQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903081043383_PendingApiQueue.resx">
+      <DependentUpon>201903081043383_PendingApiQueue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903110609229_JobRockAcademyAndTempaltePermission.resx">
+      <DependentUpon>201903110609229_JobRockAcademyAndTempaltePermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903111211598_BrandingAndStyle.resx">
+      <DependentUpon>201903111211598_BrandingAndStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904091259178_Company_BadgesEnabled.resx">
+      <DependentUpon>201904091259178_Company_BadgesEnabled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081113103_User_GlobalOfficeAdmin.resx">
+      <DependentUpon>201905081113103_User_GlobalOfficeAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905221117229_WorkPackageInfo_ShotenUrlCode.resx">
+      <DependentUpon>201905221117229_WorkPackageInfo_ShotenUrlCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905270519095_PredefinedAnswers.resx">
+      <DependentUpon>201905270519095_PredefinedAnswers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907310729225_Quiz_MultipleTags.resx">
+      <DependentUpon>201907310729225_Quiz_MultipleTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908021128212_Result_ShowLeadUserForm.resx">
+      <DependentUpon>201908021128212_Result_ShowLeadUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908071300287_LeadUserId_TypeInttoString.resx">
+      <DependentUpon>201908071300287_LeadUserId_TypeInttoString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908190644013_TemplateAttachment.resx">
+      <DependentUpon>201908190644013_TemplateAttachment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909261031269_PersonalityResultSetting_ShowLeadUserForm.resx">
+      <DependentUpon>201909261031269_PersonalityResultSetting_ShowLeadUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909280707420_Quiz_TechnicalRecruiter.resx">
+      <DependentUpon>201909280707420_Quiz_TechnicalRecruiter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910171129272_BrandingAndStyle_ApplyToAll.resx">
+      <DependentUpon>201910171129272_BrandingAndStyle_ApplyToAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911130805086_Quiz_PreviousButtonFeature.resx">
+      <DependentUpon>201911130805086_Quiz_PreviousButtonFeature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911201111144_NotificationTemplate_EmailLinkVariable.resx">
+      <DependentUpon>201911201111144_NotificationTemplate_EmailLinkVariable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912130610371_Quiz_CalendarDataInAction.resx">
+      <DependentUpon>201912130610371_Quiz_CalendarDataInAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912240751386_Quiz_AddAutomationAction.resx">
+      <DependentUpon>201912240751386_Quiz_AddAutomationAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912260736468_QuizBrandingAndStyle_BackColorAndImage.resx">
+      <DependentUpon>201912260736468_QuizBrandingAndStyle_BackColorAndImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912301314321_Quiz_TimerSettings.resx">
+      <DependentUpon>201912301314321_Quiz_TimerSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001030611068_Answer_UnansweredType.resx">
+      <DependentUpon>202001030611068_Answer_UnansweredType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001171040225_Quiz_AddVideoControl.resx">
+      <DependentUpon>202001171040225_Quiz_AddVideoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003201106501_Template_Title.resx">
+      <DependentUpon>202003201106501_Template_Title.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003270940229_Quiz_FavoriteStatus.resx">
+      <DependentUpon>202003270940229_Quiz_FavoriteStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003271253277_Quiz_FavoriteQuizByUser.resx">
+      <DependentUpon>202003271253277_Quiz_FavoriteQuizByUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004070940018_LinkedDataInAction_IsUpdated.resx">
+      <DependentUpon>202004070940018_LinkedDataInAction_IsUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004140644489_QuizBrandingAndStyle_AnswerColor.resx">
+      <DependentUpon>202004140644489_QuizBrandingAndStyle_AnswerColor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161228298_Add_CreateStandardAutomationPermission.resx">
+      <DependentUpon>202004161228298_Add_CreateStandardAutomationPermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004230941314_QuizBrandingAndStyle_LogoUrl.resx">
+      <DependentUpon>202004230941314_QuizBrandingAndStyle_LogoUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004240554426_QuizResult_InternalTitle.resx">
+      <DependentUpon>202004240554426_QuizResult_InternalTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004300920372_Quiz_Language.resx">
+      <DependentUpon>202004300920372_Quiz_Language.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006040950495_MediaFileFeature.resx">
+      <DependentUpon>202006040950495_MediaFileFeature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006120514023_PushWorkPackage_ConfigurationDetails.resx">
+      <DependentUpon>202006120514023_PushWorkPackage_ConfigurationDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006170957422_ConfigurationDetails_Notification.resx">
+      <DependentUpon>202006170957422_ConfigurationDetails_Notification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006191324001_MediaVariablesDetails.resx">
+      <DependentUpon>202006191324001_MediaVariablesDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006241227515_MediaVariable_PublicId.resx">
+      <DependentUpon>202006241227515_MediaVariable_PublicId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006300714109_BadgesandAnswer_AutoPlay.resx">
+      <DependentUpon>202006300714109_BadgesandAnswer_AutoPlay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007100814552_UnknownLead_Configuration.resx">
+      <DependentUpon>202007100814552_UnknownLead_Configuration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007151052406_ConfigurationDetails_SourceName.resx">
+      <DependentUpon>202007151052406_ConfigurationDetails_SourceName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007171052311_NotificationTemplate_CompanyId.resx">
+      <DependentUpon>202007171052311_NotificationTemplate_CompanyId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007280610560_Configuration_Attachments.resx">
+      <DependentUpon>202007280610560_Configuration_Attachments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007290608489_QuizBrandingAndStyle_LogoPublicId.resx">
+      <DependentUpon>202007290608489_QuizBrandingAndStyle_LogoPublicId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008110935224_QuizUrlSetting.resx">
+      <DependentUpon>202008110935224_QuizUrlSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008121005354_GtmSettings.resx">
+      <DependentUpon>202008121005354_GtmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008241256512_ConfigurationId_String.resx">
+      <DependentUpon>202008241256512_ConfigurationId_String.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010011418094_PendingApiQueue_RequestTypeURLandAuthorization.resx">
+      <DependentUpon>202010011418094_PendingApiQueue_RequestTypeURLandAuthorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010151037096_QuizDetails_UsageType.resx">
+      <DependentUpon>202010151037096_QuizDetails_UsageType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010161202547_Quiz_UsageTypeInQuiz.resx">
+      <DependentUpon>202010161202547_Quiz_UsageTypeInQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010260923206_ResolveMigrationError26Oct2020.resx">
+      <DependentUpon>202010260923206_ResolveMigrationError26Oct2020.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011040737551_ConfigurationDetails_WhatsApp.resx">
+      <DependentUpon>202011040737551_ConfigurationDetails_WhatsApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011041129320_HsmTemplateId_Nullable.resx">
+      <DependentUpon>202011041129320_HsmTemplateId_Nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012041003522_WorkPackageInfo_SentOn.resx">
+      <DependentUpon>202012041003522_WorkPackageInfo_SentOn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012240908546_Quiz_QuesAndContentInSameTable.resx">
+      <DependentUpon>202012240908546_Quiz_QuesAndContentInSameTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012280730587_Badges_ShowImage.resx">
+      <DependentUpon>202012280730587_Badges_ShowImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012281104219_Remove_ResultEmailSMS.resx">
+      <DependentUpon>202012281104219_Remove_ResultEmailSMS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012290623025_Question_Content_ShowTitle.resx">
+      <DependentUpon>202012290623025_Question_Content_ShowTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012300724401_Quiz_ReorderingElement.resx">
+      <DependentUpon>202012300724401_Quiz_ReorderingElement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012301054316_QuesAndContent_ShowDescription.resx">
+      <DependentUpon>202012301054316_QuesAndContent_ShowDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101041158299_Dynamic_LeadForm.resx">
+      <DependentUpon>202101041158299_Dynamic_LeadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101120711106_Logs_ApiUsageLogs.resx">
+      <DependentUpon>202101120711106_Logs_ApiUsageLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101200716170_QuestionType_Rating.resx">
+      <DependentUpon>202101200716170_QuestionType_Rating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102101354293_Remove_GtmSettings.resx">
+      <DependentUpon>202102101354293_Remove_GtmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103311003582_Answer_optionTextforRatingTypeQuestions.resx">
+      <DependentUpon>202103311003582_Answer_optionTextforRatingTypeQuestions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107020644146_MediaVariablesDetails_MediaOwner.resx">
+      <DependentUpon>202107020644146_MediaVariablesDetails_MediaOwner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107080612198_ConfigurationDetails_TemplateControls.resx">
+      <DependentUpon>202107080612198_ConfigurationDetails_TemplateControls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107211355466_QuizAnswerStats_AnswerSecondaryText.resx">
+      <DependentUpon>202107211355466_QuizAnswerStats_AnswerSecondaryText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107281028345_ConfigurationDetails_SendFallbackSms.resx">
+      <DependentUpon>202107281028345_ConfigurationDetails_SendFallbackSms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108161059543_AnswerOptionsInQuizQuestions_ListValues.resx">
+      <DependentUpon>202108161059543_AnswerOptionsInQuizQuestions_ListValues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110250729577_add-Migration_QuizDetails_SecondsToApply.resx">
+      <DependentUpon>202110250729577_add-Migration_QuizDetails_SecondsToApply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111161029455_SecondsToApply.resx">
+      <DependentUpon>202111161029455_SecondsToApply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111170616305_PrivacyJSON.resx">
+      <DependentUpon>202111170616305_PrivacyJSON.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112021237386_VideoFrameEnabled.resx">
+      <DependentUpon>202112021237386_VideoFrameEnabled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112021323379_VideoFrameUpdate.resx">
+      <DependentUpon>202112021323379_VideoFrameUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112201454591_companyId.resx">
+      <DependentUpon>202112201454591_companyId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112210621542_CompanyIdNull.resx">
+      <DependentUpon>202112210621542_CompanyIdNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112210820561_QuizIdAnswerOptionInQuiz.resx">
+      <DependentUpon>202112210820561_QuizIdAnswerOptionInQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112220645263_configurationDetails_HsmTemplateLanguageCode.resx">
+      <DependentUpon>202112220645263_configurationDetails_HsmTemplateLanguageCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201060612581_AttemptQuizLog.resx">
+      <DependentUpon>202201060612581_AttemptQuizLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201060637525_AttemptQuizLog1.resx">
+      <DependentUpon>202201060637525_AttemptQuizLog1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201101249250_AttemptQuizLog_ResponseJson.resx">
+      <DependentUpon>202201101249250_AttemptQuizLog_ResponseJson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201120606249_AnswerStructureType.resx">
+      <DependentUpon>202201120606249_AnswerStructureType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202091320565_Quiztag_UrlSetting_AnswerStat.resx">
+      <DependentUpon>202202091320565_Quiztag_UrlSetting_AnswerStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202111037546_ExternalActionQueue.resx">
+      <DependentUpon>202202111037546_ExternalActionQueue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202241507550_Languages.resx">
+      <DependentUpon>202202241507550_Languages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202250901111_AnswerOptionsInQuizQuestions_RefId.resx">
+      <DependentUpon>202202250901111_AnswerOptionsInQuizQuestions_RefId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202250905588_QuestionsInQuiz_LanguageId_TemplateId.resx">
+      <DependentUpon>202202250905588_QuestionsInQuiz_LanguageId_TemplateId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202281447193_Languages_UpdateIdentityInId.resx">
+      <DependentUpon>202202281447193_Languages_UpdateIdentityInId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203020741071_NotificationTemplate_WhatsApp.resx">
+      <DependentUpon>202203020741071_NotificationTemplate_WhatsApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203081415584_QuestionsInQuiz_LanguageCode.resx">
+      <DependentUpon>202203081415584_QuestionsInQuiz_LanguageCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203211104171_NotificationTemplatesInQuiz_CompanyId.resx">
+      <DependentUpon>202203211104171_NotificationTemplatesInQuiz_CompanyId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203221048279_Quiz_IsWhatsAppChatBotOldVersion.resx">
+      <DependentUpon>202203221048279_Quiz_IsWhatsAppChatBotOldVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204041106314_CoordinatesInBranchingLogic_QuizId_CompanyId.resx">
+      <DependentUpon>202204041106314_CoordinatesInBranchingLogic_QuizId_CompanyId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205181054361_QuestionsInQuiz_IsMultiRating.resx">
+      <DependentUpon>202205181054361_QuestionsInQuiz_IsMultiRating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205250934270_ConfigurationDetails_MsgVariables.resx">
+      <DependentUpon>202205250934270_ConfigurationDetails_MsgVariables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206011348044_NotificationTemplate_MsgVariables.resx">
+      <DependentUpon>202206011348044_NotificationTemplate_MsgVariables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206070848520_QuizVariablesMigration.resx">
+      <DependentUpon>202206070848520_QuizVariablesMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206230715476_IncreaseTitleLenght_QuizDetails_QuizResults.resx">
+      <DependentUpon>202206230715476_IncreaseTitleLenght_QuizDetails_QuizResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208031032206_ObjectFieldsInAnswer_IsExternalSync.resx">
+      <DependentUpon>202208031032206_ObjectFieldsInAnswer_IsExternalSync.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208041315465_AnswerOptionsInQuizQuestions_Description.resx">
+      <DependentUpon>202208041315465_AnswerOptionsInQuizQuestions_Description.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209070811486_QuizStats_AttemptStatus.resx">
+      <DependentUpon>202209070811486_QuizStats_AttemptStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212140712301_ObjectFieldsInAnswer_IsCommentMapped.resx">
+      <DependentUpon>202212140712301_ObjectFieldsInAnswer_IsCommentMapped.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212151300396_ObjectFieldsInAnswerComment_IsCommentMapped.resx">
+      <DependentUpon>202212151300396_ObjectFieldsInAnswerComment_IsCommentMapped.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212291013006_WhatsappLogging.resx">
+      <DependentUpon>202212291013006_WhatsappLogging.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301110612529_ObjectFieldsInAnswer_QuestionId.resx">
+      <DependentUpon>202301110612529_ObjectFieldsInAnswer_QuestionId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301271043172_FieldSyncSetting.resx">
+      <DependentUpon>202301271043172_FieldSyncSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307101151281_QuizBrandingAndStyle_HoverColor.resx">
+      <DependentUpon>202307101151281_QuizBrandingAndStyle_HoverColor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307110800168_QuizBrandingAndStyle_ButtonHoverColor.resx">
+      <DependentUpon>202307110800168_QuizBrandingAndStyle_ButtonHoverColor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307171325120_QuizBrandingAndStyle_ButtonHoverTextColor.resx">
+      <DependentUpon>202307171325120_QuizBrandingAndStyle_ButtonHoverTextColor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308011329531_QuizAttempts_SourceId.resx">
+      <DependentUpon>202308011329531_QuizAttempts_SourceId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309250758133_WorkPackageInfo_RequestId.resx">
+      <DependentUpon>202309250758133_WorkPackageInfo_RequestId.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Common.Extensions\Core.Common.Extensions.csproj">
+      <Project>{88aae006-cd9a-4ddd-8957-426e28a79352}</Project>
+      <Name>Core.Common.Extensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59324</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:59966/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Web.WebJobs.Publish.2.0.0\build\Microsoft.Web.WebJobs.Publish.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebJobs.Publish.2.0.0\build\Microsoft.Web.WebJobs.Publish.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.18.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.18.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.18.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.18.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.18.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.18.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.18.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.2.18.0\build\Microsoft.ApplicationInsights.WindowsServer.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.Web.2.18.0\build\Microsoft.ApplicationInsights.Web.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.Web.2.18.0\build\Microsoft.ApplicationInsights.Web.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Web.WebJobs.Publish.2.0.0\build\Microsoft.Web.WebJobs.Publish.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish.2.0.0\build\Microsoft.Web.WebJobs.Publish.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.18.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.18.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.18.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.18.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.18.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.18.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.2.18.0\build\Microsoft.ApplicationInsights.WindowsServer.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.18.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.Web.2.18.0\build\Microsoft.ApplicationInsights.Web.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.Web.2.18.0\build\Microsoft.ApplicationInsights.Web.targets')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

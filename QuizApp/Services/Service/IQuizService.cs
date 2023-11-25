@@ -1,0 +1,106 @@
+﻿using QuizApp.Helpers;
+using QuizApp.RepositoryPattern;
+using QuizApp.Request;
+using QuizApp.Services.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace QuizApp.Services.Service
+{
+    public interface IQuizService
+    {
+        ResultEnum Status { get; set; }
+        string ErrorMessage { get; set; }
+        void UpdateQuiz(QuizDto QuizObj, int BusinessUserId, int CompanyId);
+        //List<LocalQuiz> GetList(int BusinessUserID, List<string> OfficeIdList, bool IncludeSharedWithMe, long OffsetValue, string SearchTxt, string QuizTypeId, CompanyModel CompanyInfo, bool IsDataforGlobalOfficeAdmin, bool IsGlobalOfficeAdmin, int? UserInfoId = null, string QuizId = "", bool? IsFavorite = null, bool? IsPublished = null, bool IsCreateStandardAutomation = false, int? QuizTagId = null);
+        //QuizList GetAutomationList(int PageNo, int PageSize, int BusinessUserID, List<string> OfficeIdList, bool IncludeSharedWithMe, long OffsetValue, string SearchTxt, int OrderBy , string QuizTypeId, CompanyModel CompanyInfo, bool IsDataforGlobalOfficeAdmin, bool IsGlobalOfficeAdmin, int? UserInfoId = null, string QuizId = "", bool? IsFavorite = null, bool? IsPublished = null, bool IsCreateStandardAutomation = false, int? QuizTagId = null, int? UsageType = null);
+       // void UpdateBrandingAndStyle(QuizBrandingAndStyleModel BrandingAndStyleObj, int BusinessUserId, int CompanyId);
+        QuizBrandingAndStyleModel GetQuizBrandingAndStyle(int QuizId);
+        void UpdateQuizAccessSetting(LocalQuiz QuizObj, int BusinessUserId, int CompanyId);
+        LocalQuiz GetQuizAccessSetting(int QuizId);
+        void UpdateQuizSocialShareSetting(QuizSocialShareSetting QuizSocialShareSettingObj, int BusinessUserId);
+        QuizSocialShareSetting GetQuizSocialShareSetting(int QuizId);
+        //QuizQuestion AddQuizQuestion(int QuizId, int BusinessUserId, int CompanyId, int Type, bool isWhatsappEnable = false);
+        //QuizQuestion AddQuizWhatsAppTemplate(int QuizId, int templateId, string language, int BusinessUserId, int CompanyId, string clientCode, int Type);
+        QuizQuestion GetQuizQuestionDetails(int QuestionId, int QuizId);
+        void UpdateQuizQuestionDetails(QuizQuestion QuizQuestionObj, int BusinessUserId, int CompanyId, bool isWhatsappEnable = false);
+        void UpdateQuizCorrectAnswerSetting(QuizCorrectAnswerSetting QuizCorrectAnswerSettingObj, int BusinessUserId, int CompanyId);
+        AnswerOptionInQuestion AddAnswerOptionInQuestion(int QuestionId, int BusinessUserId, int CompanyId);
+        void RemoveAnswer(int AnswerId, int BusinessUserId, int CompanyId, int? type = null, AutomationUnitOfWork UOWObj = null);
+        void RemoveQuestion(int QuestionId, int BusinessUserId, int CompanyId);
+        void ReorderQuestionAnswerAndContent(bool IsQuesAndContentInSameTable, List<QuizQuestion> ReorderedList, int BusinessUserId, int CompanyId);
+        //QuizResult AddQuizResult(int QuizId, int BusinessUserId, int CompanyId, int? quizType = 0);
+        void UpdateResultSetting(QuizResultSetting QuizResultSettingObj, int BusinessUserId, int CompanyId);
+        void UpdateQuizResult(QuizResult QuizResultObj, int BusinessUserId, int CompanyId);
+        void RemoveQuizResult(int ResultId, int BusinessUserId, int CompanyId);
+        QuizResult GetQuizResultDetails(int ResultId, int QuizId);
+        //QuizDetails GetQuizDetails(int QuizId);
+        QuizBranchingLogicLinksList GetQuizBranchingLogicData(int QuizId);
+        void UpdateQuizBranchingLogicDetails(QuizBranchingLogicLinksList QuizBranchingLogic, int BusinessUserId, int CompanyId);
+        List<QuizResult> GetQuizResults(int QuizId);
+        int DuplicateQuiz(int QuizId, string AccessibleOfficeId, string UserType, int? ModuleType, int BusinessUserId, CompanyModel CompanyInfo, bool IsCreateAcademyCourse, bool IsCreateTechnicalRecruiterCourse);
+        void RemoveQuiz(int QuizId, int BusinessUserId, int CompanyId);
+        List<QuizResultRedirect> GetQuizRedirectResult(int QuizId);
+        void UpdateQuizRedirectResult(List<QuizResultRedirect> RedirectResultList, int BusinessUserId, int CompanyId);
+        void UpdateBranchingLogicState(int QuizId, int BusinessUserId, bool IsEnabled, int CompanyId);
+        List<QuizVersion> GetQuizListByVersions(int QuizId, long OffsetValue);
+        QuizAnalyticsOverview GetQuizAnalyticsOverview(int PublishedQuizId);
+        QuizAnalyticsStats GetQuizAnalyticsStats(int PublishedQuizId);
+        string GetQuizAttemptCode(string PublishedCode, string Mode, int UserTypeId, string UserId, int WorkPackageInfoId, BusinessUser UserInfo, string SourceId = "", string ConfigurationId = null, string CompanyCode = "");
+        void UpdateQuizCompleteStatus(string QuizCode, string LeadUserId);
+        List<QuizLeadCollectionStats> GetQuizLeadCollectionStats(int PublishedQuizId);
+        QuizAction AddActionInQuiz(int QuizId, int BusinessUserId, int CompanyId);
+        void UpdateActionInQuiz(QuizAction QuizObj, int BusinessUserId, int CompanyId);
+        void RemoveActionInQuiz(int Id, int BusinessUserId, int CompanyId);
+        QuizAction GetQuizAction(int Id);
+        QuizContent AddContentInQuiz(int QuizId, int BusinessUserId, int CompanyId);
+        void UpdateContentInQuiz(QuizContent QuizObj, int BusinessUserId, int CompanyId);
+        void RemoveContentInQuiz(int Id, int BusinessUserId, int CompanyId);
+        QuizContent GetQuizContent(int Id, int QuizId);
+        void AddAttachmentInQuiz(QuizAttachment Obj, int BusinessUserId, int CompanyId);
+        QuizAttachment GetAttachmentsInQuiz(int QuizId);
+        void QuizShareSetting(QuizShare Obj, int BusinessUserId, bool IsCreateAcademyCourse, bool CreateTechnicalRecruiterCourse, int CompanyId);
+        QuizShare GetQuizShareSetting(int QuizId);
+        QuizBadge AddBadgeInQuiz(int QuizId, int BusinessUserId, int CompanyId);
+        void RemoveBadgeInQuiz(int Id, int BusinessUserId, int CompanyId);
+        void UpdateBadgeInQuiz(QuizBadge BadgeObj, int BusinessUserId, int CompanyId);
+        QuizBadge GetBadgeInQuiz(int Id, int QuizId);
+        void RemoveTag(int TagId, int CompanyId);
+        void UpdateAnswerTagAndCategory(List<QuizAnsweTags> quizAnsweTags, int CompanyId);
+        List<AttemptedQuizDetail> GetAttemptedQuizDetailByLead(string LeadId, int QuizId, string ConfigurationId);
+        void RemoveCategory(int CategoryId, int CompanyId);
+        void UpdateResultRange(QuizResultRange quizResultRangeObj, int BusinessUserId, int CompanyId);
+        List<string> GetVariablesByQuizId(int QuizId);
+        QuizResultAndAction GetQuizResultAndAction(int QuizId, bool AllResultRequired = false, bool AllActionRequired = false);
+        QuizResultAndAction GetQuizAllResultAndAction(int QuizId);
+        void UpdateResultCorrelation(ResultCorrelation resultCorrelation, int BusinessUserId, int CompanyId);
+        void ReorderResultQuestionAnswer(QuizReorderResult reorderedList, int BusinessUserId, int CompanyId);
+        void ReorderAnswer(QuizQuestion questionObj, int BusinessUserId, int CompanyId);
+        void UpdatePersonalityResultSetting(PersonalityResultSettingModel MultipleResult, int BusinessUserId, int CompanyId);
+        PersonalityResultSettingModel GetPersonalityResultSetting(int quizId);
+        List<Correlation> GetResultCorrelation(int questionId);
+        void UpdatePersonalityResultStatus(int quizId, int status, int BusinessUserId, int CompanyId);
+        void UpdatePersonalityWidthSetting(int quizId, bool isFullWidthEnable, int BusinessUserId, int CompanyId);
+        void UpdatePersonalityMaxResult(int quizId, int maxResult, bool ShowLeadUserForm, int BusinessUserId, int CompanyId);
+        //void UpdateAnswerType(int QuestionId, int AnswerType, int BusinessUserId, int CompanyId, int? answerStructureType, bool isWhatsappEnable = false, bool isMultiRating = false);
+        List<PendingApiQueueModel> PendingApiList();
+        List<AttemptedAutomation> GetAttemptedAutomationByLeads(string LeadIds, int QuizId);
+        List<AttemptedAutomationAchievedResultDetails> GetAttemptedAutomationAcheivedResultDetailsByLeads(List<string> LeadID, int QuizId);
+        void UpdateQuizQuestionSetting(QuizCorrectAnswerSetting QuizCorrectAnswerSettingObj, int BusinessUserId, int CompanyId);
+        void UpdateQuizSetting(QuizSetting QuizSettingObj, int BusinessUserId, int CompanyId);
+        void UpdateContenSettingtInQuiz(QuizContent QuizObj, int BusinessUserId, int CompanyId);
+        QuizDetailsModel GetQuizPreviousQuestionSetting(int QuizId);
+        void UpdateQuizFavoriteStatus(int QuizId, bool IsFavorite, BusinessUser UserInfo);
+        DynamicFieldDetails GetDynamicFieldByQuizId(int QuizId);
+        string GetUrlValueByKey(string Key, string DomainName);
+        void UpdateAnswerObjectFieldsDetails(List<ObjectFieldsDetails> objectFieldsDetails, int CompanyId, int BusinessUserId);
+        void RemoveAnswerObjectFieldsDetails(int AnswerId, int CompanyId, int BusinessUserId);
+        void UpdateQuizUsageTypeandTagDetails(QuizUsageTypeandTagDetails Obj, BusinessUser UserInfo);
+        QuizUsageTypeDetails GetQuizUsageTypeDetails(int QuizId, int CompanyId);
+        int GetQuizIdByAttemptCode(string AttemptCode);
+        void UpdateAnswerOptionValues(int AnswerId, List<string> ListValues, int BusinessUserId, int CompanyId);
+    }
+}
