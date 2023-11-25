@@ -1,2 +1,12 @@
 packages/
 QuizApp/App_Data/
+Core.Common.Extensions/bin/
+QuizApp.ARM/bin/
+QuizApp.Cron/bin/
+QuizApp.TriggerAction/bin/
+QuizApp.TriggerAction/obj/
+QuizApp/bin/
+QuizApp/obj/
+QuizApp.Cron/obj/
+Core.Common.Extensions/obj/
+QuizApp.ARM/obj/

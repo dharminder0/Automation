@@ -6,3 +6,11 @@ E:\Projects\quiz-builder-api\Core.Common.Extensions\obj\Debug\Core.Common.Extens
 E:\Projects\quiz-builder-api\Core.Common.Extensions\obj\Debug\Core.Common.Extensions.csproj.CopyComplete
 E:\Projects\quiz-builder-api\Core.Common.Extensions\obj\Debug\Core.Common.Extensions.dll
 E:\Projects\quiz-builder-api\Core.Common.Extensions\obj\Debug\Core.Common.Extensions.pdb
+E:\FleekProject\Automation\Core.Common.Extensions\bin\Debug\Core.Common.Extensions.dll
+E:\FleekProject\Automation\Core.Common.Extensions\bin\Debug\Core.Common.Extensions.pdb
+E:\FleekProject\Automation\Core.Common.Extensions\bin\Debug\Newtonsoft.Json.dll
+E:\FleekProject\Automation\Core.Common.Extensions\bin\Debug\Newtonsoft.Json.xml
+E:\FleekProject\Automation\Core.Common.Extensions\obj\Debug\Core.Common.Extensions.csproj.CoreCompileInputs.cache
+E:\FleekProject\Automation\Core.Common.Extensions\obj\Debug\Core.Common.Extensions.csproj.CopyComplete
+E:\FleekProject\Automation\Core.Common.Extensions\obj\Debug\Core.Common.Extensions.dll
+E:\FleekProject\Automation\Core.Common.Extensions\obj\Debug\Core.Common.Extensions.pdb
